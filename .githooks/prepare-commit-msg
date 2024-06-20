@@ -29,6 +29,6 @@ if [ -n "$issueId" ]; then
   # only add the GitHub issue, if it is not already there.
   if [ "$matches" = "0" ]; then # textual match, because numeric "error string" -eq 0 is true
 
-    sed -i.bak -e "1s/^/\[$issueId\] /" "$COMMIT_MSG_FILE"
+    sed -i.bak -e "1s/^/\[#$issueId\] /" "$COMMIT_MSG_FILE"
   fi
 fi
