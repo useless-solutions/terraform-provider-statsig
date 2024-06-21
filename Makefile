@@ -34,3 +34,12 @@ generate:
 	@echo "$(OK_COLOR)==> Generating code and docs$(NO_COLOR)"
 	@go generate ./...
 	@echo "$(OK_COLOR)==> Generation complete$(NO_COLOR)"
+
+# Build and install the provider
+build:
+	@go install .
+
+verify-provider-install: build
+	@echo "$(OK_COLOR)==> Verifying provider$(NO_COLOR)"
+	@cd examples/provider-install-verification && terraform plan
+	@echo "$(OK_COLOR)==> Provider verified$(NO_COLOR)"
