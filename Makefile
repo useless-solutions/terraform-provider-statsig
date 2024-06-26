@@ -23,3 +23,23 @@ pre-commit:
 	@cp .githooks/prepare-commit-msg .git/hooks/prepare-commit-msg
 	@chmod +x .git/hooks/prepare-commit-msg
 	@echo "$(OK_COLOR)==> Hooks installed$(NO_COLOR)"
+
+update-modules:
+	@echo "$(OK_COLOR)==> Updating modules$(NO_COLOR)"
+	@go get -u ./...
+	@go mod tidy
+	@echo "$(OK_COLOR)==> Modules updated$(NO_COLOR)"
+
+generate:
+	@echo "$(OK_COLOR)==> Generating code and docs$(NO_COLOR)"
+	@go generate ./...
+	@echo "$(OK_COLOR)==> Generation complete$(NO_COLOR)"
+
+# Build and install the provider
+build:
+	@go install .
+
+verify-provider-install: build
+	@echo "$(OK_COLOR)==> Verifying provider$(NO_COLOR)"
+	@cd examples/provider-install-verification && terraform plan
+	@echo "$(OK_COLOR)==> Provider verified$(NO_COLOR)"
