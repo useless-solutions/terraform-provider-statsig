@@ -1,4 +1,4 @@
-package client
+package statsig
 
 type statsigMetadata struct {
 	SDKType    string `json:"sdkType"`

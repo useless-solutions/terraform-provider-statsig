@@ -5,7 +5,8 @@ import (
 	"os"
 	"regexp"
 
-	"github.com/useless-solutions/terraform-provider-statsig/internal/client"
+	"github.com/useless-solutions/terraform-provider-statsig/internal/service/tags"
+	client "github.com/useless-solutions/terraform-provider-statsig/internal/statsig"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
@@ -132,7 +133,7 @@ func (p *StatsigProvider) Resources(ctx context.Context) []func() resource.Resou
 // DataSources defines the data sources implemented in the provider.
 func (p *StatsigProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
-		NewExampleDataSource,
+		tags.NewTagsDataSource,
 	}
 }
 
