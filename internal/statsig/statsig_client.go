@@ -18,6 +18,17 @@ type Client struct {
 	Client   *http.Client
 }
 
+type Response struct {
+	Message string
+	Data    interface{}
+	Errors  interface{}
+}
+
+type APIResponse struct {
+	StatusCode int
+	Response
+}
+
 func NewClient(_ context.Context, apiKey string) (*Client, error) {
 	return &Client{
 		HostURL:  "https://api.statsig.com/console/v1",
@@ -27,9 +38,12 @@ func NewClient(_ context.Context, apiKey string) (*Client, error) {
 	}, nil
 }
 
-// All API calls must include 'STATSIG-API-KEY' in the header. This is the apiKey value
 func (c *Client) Get(endpoint string, queryParams map[string]string) ([]byte, error) {
 	return c.doRequest("GET", endpoint, nil, queryParams)
+}
+
+func (c *Client) Post(endpoint string, requestBody interface{}) ([]byte, error) {
+	return c.doRequest("POST", endpoint, requestBody, nil)
 }
 
 func (c *Client) doRequest(method string, endpoint string, requestBody interface{}, queryParams map[string]string) ([]byte, error) {
@@ -49,10 +63,6 @@ func (c *Client) doRequest(method string, endpoint string, requestBody interface
 	parsedBody, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
-	}
-
-	if res.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("status: %d, body: %s", res.StatusCode, parsedBody)
 	}
 
 	return parsedBody, err

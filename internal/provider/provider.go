@@ -16,6 +16,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 // Ensure the implementation satisfies the expected interfaces.
@@ -58,14 +59,12 @@ func (p *StatsigProvider) Schema(_ context.Context, _ provider.SchemaRequest, re
 
 // Configure prepares a Statsig API client for data sources and resources.
 func (p *StatsigProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
+	tflog.Info(ctx, "Configuring Statsig provider")
 	var config StatsigProviderModel
 	resp.Diagnostics.Append(req.Config.Get(ctx, &config)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
-
-	// If practitioner provided a configuration value for any of the
-	// attributes, it must be a known value.
 
 	if config.ConsoleKey.IsUnknown() {
 		resp.Diagnostics.AddAttributeError(
@@ -88,9 +87,6 @@ func (p *StatsigProvider) Configure(ctx context.Context, req provider.ConfigureR
 		consoleAPIKey = config.ConsoleKey.ValueString()
 	}
 
-	// If any of the expected configurations are missing, return
-	// errors with provider-specific guidance.
-
 	if consoleAPIKey == "" {
 		resp.Diagnostics.AddAttributeError(
 			path.Root("console_api_key"),
@@ -104,6 +100,10 @@ func (p *StatsigProvider) Configure(ctx context.Context, req provider.ConfigureR
 	if resp.Diagnostics.HasError() {
 		return
 	}
+
+	ctx = tflog.SetField(ctx, "console_api_key", consoleAPIKey)
+	ctx = tflog.MaskFieldValuesWithFieldKeys(ctx, "console_api_key")
+	tflog.Debug(ctx, "Creating Statsig API Client")
 
 	// Create a new Statsig client using the configuration values
 	client, err := client.NewClient(ctx, consoleAPIKey)
@@ -121,12 +121,14 @@ func (p *StatsigProvider) Configure(ctx context.Context, req provider.ConfigureR
 	// type Configure methods.
 	resp.DataSourceData = client
 	resp.ResourceData = client
+
+	tflog.Info(ctx, "Configured Statsig provider", map[string]any{"success": true})
 }
 
 // Resources defines the resources implemented in the provider.
 func (p *StatsigProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
-		NewExampleResource,
+		tags.NewTagResource,
 	}
 }
 
