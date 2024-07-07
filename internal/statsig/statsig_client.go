@@ -18,17 +18,6 @@ type Client struct {
 	Client   *http.Client
 }
 
-type Response struct {
-	Message string
-	Data    interface{}
-	Errors  interface{}
-}
-
-type APIResponse struct {
-	StatusCode int
-	Response
-}
-
 func NewClient(_ context.Context, apiKey string) (*Client, error) {
 	return &Client{
 		HostURL:  "https://api.statsig.com/console/v1",
