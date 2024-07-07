@@ -5,6 +5,8 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	"github.com/useless-solutions/terraform-provider-statsig/internal/statsig"
 )
@@ -28,6 +30,34 @@ func (d *TagsDataSource) Metadata(ctx context.Context, req datasource.MetadataRe
 	resp.TypeName = req.ProviderTypeName + "_tags"
 }
 
+func (d *TagsDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
+	resp.Schema = schema.Schema{
+		MarkdownDescription: "Use this resource to retrieve the tags associated with the Statsig Project.",
+
+		Attributes: map[string]schema.Attribute{
+			"tags": schema.ListNestedAttribute{
+				Computed: true,
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"id": schema.StringAttribute{
+							Computed: true,
+						},
+						"name": schema.StringAttribute{
+							Computed: true,
+						},
+						"description": schema.StringAttribute{
+							Computed: true,
+						},
+						"is_core": schema.BoolAttribute{
+							Computed: true,
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
 func (d *TagsDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
 	// Prevent panic if the provider has not been configured.
 	if req.ProviderData == nil {
@@ -49,7 +79,7 @@ func (d *TagsDataSource) Configure(ctx context.Context, req datasource.Configure
 }
 
 func (d *TagsDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var state statsig.TagsDataSourceModel
+	var state TagsDataSourceModel
 
 	// Read Terraform configuration data into the model
 	resp.Diagnostics.Append(req.Config.Get(ctx, &state)...)
@@ -65,11 +95,11 @@ func (d *TagsDataSource) Read(ctx context.Context, req datasource.ReadRequest, r
 	}
 
 	for _, tag := range tags {
-		state.Tags = append(state.Tags, statsig.Tag{
-			ID:          tag.ID,
-			Name:        tag.Name,
-			Description: tag.Description,
-			IsCore:      tag.IsCore,
+		state.Tags = append(state.Tags, Tag{
+			ID:          types.StringValue(tag.ID),
+			Name:        types.StringValue(tag.Name),
+			Description: types.StringValue(tag.Description),
+			IsCore:      types.BoolValue(tag.IsCore),
 		})
 	}
 
