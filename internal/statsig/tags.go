@@ -42,6 +42,24 @@ func (c *Client) GetTags(ctx context.Context) ([]TagAPIRequest, error) {
 	return tagsResponse.Data, nil
 }
 
+func (c *Client) GetTag(ctx context.Context, tagID string) (*TagAPIRequest, error) {
+	// Get all tags and find the one with the matching ID
+	tags, err := c.GetTags(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	var tag TagAPIRequest
+	for _, t := range tags {
+		if t.ID == tagID {
+			tag = t
+			break
+		}
+	}
+
+	return &tag, nil
+}
+
 func (c *Client) CreateTag(ctx context.Context, tag TagAPIRequest) (*TagAPIRequest, error) {
 	response, err := c.Post("tags", tag)
 	if err != nil {

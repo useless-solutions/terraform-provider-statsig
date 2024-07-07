@@ -50,7 +50,7 @@ func (p *StatsigProvider) Schema(_ context.Context, _ provider.SchemaRequest, re
 				Required:    true,
 				Description: "A Statsig Console API Key",
 				Validators: []validator.String{
-					stringvalidator.RegexMatches(regexp.MustCompile("^console-.*"), "Provided key is not a valid Console API key"),
+					stringvalidator.RegexMatches(regexp.MustCompile("^console-[a-zA-Z0-9]{3,}"), "Provided key is not a valid Console API key"),
 				},
 			},
 		},

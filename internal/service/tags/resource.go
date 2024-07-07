@@ -131,27 +131,38 @@ func (r *TagResource) Create(ctx context.Context, req resource.CreateRequest, re
 	}
 }
 
-// TODO: Functionality doesn't exist in API. Might be able to hack it with read ALL tags and filter by ID/name.
 func (r *TagResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
-	var data statsig.TagAPIRequest
+	var state Tag
 
-	// Read Terraform prior state data into the model
-	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
-
+	// Get the current state of the resource
+	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	// If applicable, this is a great opportunity to initialize any necessary
-	// provider client data and make a call using it.
-	// httpResp, err := r.client.Do(httpReq)
-	// if err != nil {
-	//     resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to read example, got error: %s", err))
-	//     return
-	// }
+	// Get the tag from the API
+	tag, err := r.client.GetTag(ctx, state.ID.ValueString())
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Client Error",
+			fmt.Sprintf("Unable to read tag, got error: %s", err),
+		)
+		return
+	}
+
+	// Update the state with the tag attributes
+	state = Tag{
+		ID:          types.StringValue(tag.ID),
+		Name:        types.StringValue(tag.Name),
+		Description: types.StringValue(tag.Description),
+		IsCore:      types.BoolValue(tag.IsCore),
+	}
 
 	// Save updated data into Terraform state
-	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
+	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
 }
 
 // TODO: Functionality not supported in API. Will likely delete this.
@@ -197,7 +208,7 @@ func (r *TagResource) Delete(ctx context.Context, req resource.DeleteRequest, re
 	// }
 }
 
-// TODO: Need to test this functionality
+// TODO: Need to test this functionality.
 func (r *TagResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
 	resource.ImportStatePassthroughID(ctx, path.Root("id"), req, resp)
 }

@@ -55,8 +55,11 @@ func (c *Client) doRequest(method string, endpoint string, requestBody interface
 	if err != nil {
 		return nil, err
 	}
-	if res.StatusCode < 200 || res.StatusCode >= 300 {
-		return nil, fmt.Errorf("Failed %s request to %s with status code %d.", method, req.URL, res.StatusCode)
+	switch {
+	case res.StatusCode == 401:
+		return nil, fmt.Errorf("Unauthorized request to %s. Please check your API key.", req.URL)
+	case res.StatusCode < 200 || res.StatusCode >= 300:
+		return nil, fmt.Errorf("Failed to perform request to %s with status code %d.", req.URL, res.StatusCode)
 	}
 	defer res.Body.Close()
 
