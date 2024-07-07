@@ -28,8 +28,8 @@ func NewClient(_ context.Context, apiKey string) (*Client, error) {
 }
 
 // All API calls must include 'STATSIG-API-KEY' in the header. This is the apiKey value
-func (c *Client) Get(method string, endpoint string, queryParams map[string]string) ([]byte, error) {
-	return c.doRequest(method, endpoint, nil, queryParams)
+func (c *Client) Get(endpoint string, queryParams map[string]string) ([]byte, error) {
+	return c.doRequest("GET", endpoint, nil, queryParams)
 }
 
 func (c *Client) doRequest(method string, endpoint string, requestBody interface{}, queryParams map[string]string) ([]byte, error) {
