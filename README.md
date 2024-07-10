@@ -14,6 +14,7 @@ For reference, the final step is to [publish it on the Terraform Registry](https
 
 - [Terraform](https://developer.hashicorp.com/terraform/downloads) >= 1.0
 - [Go](https://golang.org/doc/install) >= 1.21
+- [jq](https://stedolan.github.io/jq/download/) >= 1.7.1
 
 ## Building The Provider
 

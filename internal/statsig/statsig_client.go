@@ -27,9 +27,12 @@ func NewClient(_ context.Context, apiKey string) (*Client, error) {
 	}, nil
 }
 
-// All API calls must include 'STATSIG-API-KEY' in the header. This is the apiKey value
 func (c *Client) Get(endpoint string, queryParams map[string]string) ([]byte, error) {
 	return c.doRequest("GET", endpoint, nil, queryParams)
+}
+
+func (c *Client) Post(endpoint string, requestBody interface{}) ([]byte, error) {
+	return c.doRequest("POST", endpoint, requestBody, nil)
 }
 
 func (c *Client) doRequest(method string, endpoint string, requestBody interface{}, queryParams map[string]string) ([]byte, error) {
@@ -41,18 +44,17 @@ func (c *Client) doRequest(method string, endpoint string, requestBody interface
 	if err != nil {
 		return nil, err
 	}
-	if res.StatusCode < 200 || res.StatusCode >= 300 {
-		return nil, fmt.Errorf("Failed %s request to %s with status code %d.", method, req.URL, res.StatusCode)
+	switch {
+	case res.StatusCode == 401:
+		return nil, fmt.Errorf("Unauthorized request to %s. Please check your API key.", req.URL)
+	case res.StatusCode < 200 || res.StatusCode >= 300:
+		return nil, fmt.Errorf("Failed to perform request to %s with status code %d.", req.URL, res.StatusCode)
 	}
 	defer res.Body.Close()
 
 	parsedBody, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
-	}
-
-	if res.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("status: %d, body: %s", res.StatusCode, parsedBody)
 	}
 
 	return parsedBody, err
