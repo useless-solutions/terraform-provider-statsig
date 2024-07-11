@@ -26,7 +26,6 @@ func NewTagResource() resource.Resource {
 	return &TagResource{}
 }
 
-// TagResource defines the resource implementation.
 type TagResource struct {
 	client *statsig.Client
 }
@@ -85,6 +84,11 @@ func (r *TagResource) Configure(ctx context.Context, req resource.ConfigureReque
 	r.client = client
 }
 
+/*
+Create a new tag with the provided attributes.
+
+The ID of the created tag is saved into the Terraform state once the value is returned from the API.
+*/
 func (r *TagResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
 	var plan Tag
 
@@ -113,14 +117,12 @@ func (r *TagResource) Create(ctx context.Context, req resource.CreateRequest, re
 	}
 
 	// Update the plan attributes with the tag attributes
-	tflog.Debug(ctx, fmt.Sprintf("Updating plan with created tag. Currently: %+v", plan))
 	plan = Tag{
 		ID:          types.StringValue(tag.ID),
 		Name:        types.StringValue(tag.Name),
 		Description: types.StringValue(tag.Description),
 		IsCore:      types.BoolValue(tag.IsCore),
 	}
-	tflog.Debug(ctx, fmt.Sprintf("Updated plan with created tag. Now: %+v", plan))
 
 	tflog.Trace(ctx, fmt.Sprintf("Tag created with ID: %s", plan.ID))
 
@@ -131,6 +133,9 @@ func (r *TagResource) Create(ctx context.Context, req resource.CreateRequest, re
 	}
 }
 
+/*
+Read the tag from the API and update the Terraform state with the tag attributes.
+*/
 func (r *TagResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
 	var state Tag
 
@@ -141,11 +146,11 @@ func (r *TagResource) Read(ctx context.Context, req resource.ReadRequest, resp *
 	}
 
 	// Get the tag from the API
-	tag, err := r.client.GetTag(ctx, state.ID.ValueString())
+	tag, err := r.client.GetTag(ctx, state.ID.ValueString()+"fs")
 	if err != nil {
 		resp.Diagnostics.AddError(
 			"Client Error",
-			fmt.Sprintf("Unable to read tag, got error: %s", err),
+			err.Error(),
 		)
 		return
 	}
@@ -165,50 +170,37 @@ func (r *TagResource) Read(ctx context.Context, req resource.ReadRequest, resp *
 	}
 }
 
-// TODO: Functionality not supported in API. Will likely delete this.
+/*
+The API does not support updating. This resource is immutable.
+
+If the user wants to change a tag, they should create a new one and manually delete the old one in the Console.
+This is a limitation of the Statsig API.
+
+This method returns an error to the user to inform them of this limitation.
+*/
 func (r *TagResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	var data statsig.TagAPIRequest
-
-	// Read Terraform plan data into the model
-	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
-
-	if resp.Diagnostics.HasError() {
-		return
-	}
-
-	// If applicable, this is a great opportunity to initialize any necessary
-	// provider client data and make a call using it.
-	// httpResp, err := r.client.Do(httpReq)
-	// if err != nil {
-	//     resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to update example, got error: %s", err))
-	//     return
-	// }
-
-	// Save updated data into Terraform state
-	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
+	resp.Diagnostics.AddError(
+		"Update Not Supported",
+		"Tags are immutable in the Statsig API. If you need to change a tag, create a new one and manually delete the old one in the Console.",
+	)
 }
 
-// TODO: Functionality not supported in API. Will likely delete this.
+/*
+The API does not support deleting. This resource is immutable.
+
+If the user wants to delete a tag, they should do so manually in the Console. Following that, they can remove the tag from the Terraform state.
+This is a limitation of the Statsig API.
+
+We will return an error to the user to inform them of this limitation.
+*/
 func (r *TagResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
-	var data statsig.TagAPIRequest
-
-	// Read Terraform prior state data into the model
-	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
-
-	if resp.Diagnostics.HasError() {
-		return
-	}
-
-	// If applicable, this is a great opportunity to initialize any necessary
-	// provider client data and make a call using it.
-	// httpResp, err := r.client.Do(httpReq)
-	// if err != nil {
-	//     resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to delete example, got error: %s", err))
-	//     return
-	// }
+	resp.Diagnostics.AddError(
+		"Delete Not Supported",
+		"Tags are immutable in the Statsig API. If you need to delete a tag, do so manually in the Console. Following that, remove the tag from the Terraform state. Do this using the `terraform state rm` command.",
+	)
 }
 
-// TODO: Need to test this functionality.
+// TODO: Need to implement and test this functionality.
 func (r *TagResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
 	resource.ImportStatePassthroughID(ctx, path.Root("id"), req, resp)
 }
