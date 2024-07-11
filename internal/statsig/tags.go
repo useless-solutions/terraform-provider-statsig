@@ -53,8 +53,15 @@ func (c *Client) GetTag(ctx context.Context, tagID string) (*TagAPIRequest, erro
 	for _, t := range tags {
 		if t.ID == tagID {
 			tag = t
+			tflog.Trace(ctx, fmt.Sprintf("Successfully tag with ID: %s", tagID))
 			break
 		}
+	}
+
+	// Log an error if the the tag is null
+	if tag == (TagAPIRequest{}) {
+		tflog.Error(ctx, fmt.Sprintf("Tag with ID %s not found.", tagID))
+		return nil, fmt.Errorf("Tag with ID '%s' not found.", tagID)
 	}
 
 	return &tag, nil
