@@ -185,11 +185,15 @@ func (r *TagResource) Update(ctx context.Context, req resource.UpdateRequest, re
 	)
 }
 
+/*
+The API does not support deleting. This resource is immutable.
+
+If the user wants to delete a tag, they should do so manually in the Console. Following that, they can remove the tag from the Terraform state.
+This is a limitation of the Statsig API.
+
+We will return an error to the user to inform them of this limitation.
+*/
 func (r *TagResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
-	// The API does not support deleting. This resource is immutable.
-	// If the user wants to delete a tag, they should do so manually in the Console. Following that, they can remove the tag from the Terraform state.
-	// This is a limitation of the Statsig API.
-	// We will return an error to the user to inform them of this limitation.
 	resp.Diagnostics.AddError(
 		"Delete Not Supported",
 		"Tags are immutable in the Statsig API. If you need to delete a tag, do so manually in the Console. Following that, remove the tag from the Terraform state. Do this using the `terraform state rm` command.",
