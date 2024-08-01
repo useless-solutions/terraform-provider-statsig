@@ -18,9 +18,18 @@ type Client struct {
 	Client   *http.Client
 }
 
+// ErrorResponse is the representation of the response body when an error occurs. This is different from
+// the APIResponse struct as it only contains the message and status code of the error, rather than the data.
+type ErrorResponse struct {
+	Message    string `json:"message"`
+	StatusCode int    `json:"status"`
+}
+
+// NewClient creates a new Statsig client with the provided API key.
+// The Client instance includes an HTTP client with a 10-second timeout to be used for API requests.
 func NewClient(_ context.Context, apiKey string) (*Client, error) {
 	return &Client{
-		HostURL:  "https://api.statsig.com/console/v1",
+		HostURL:  "https://statsigapi.net/console/v1",
 		APIKey:   apiKey,
 		Metadata: getStatsigMetadata(),
 		Client:   &http.Client{Timeout: time.Second * 10},
@@ -35,6 +44,11 @@ func (c *Client) Post(endpoint string, requestBody interface{}) ([]byte, error) 
 	return c.doRequest("POST", endpoint, requestBody, nil)
 }
 
+// doRequest performs an HTTP request that is built with the provided method, endpoint, body, and query parameters.
+// The request is first build using the buildRequest method, and then executed using the Statsig Client's HTTP client.
+//
+// The API returns an error message in the response body when an error occurs. Unknown (unexpected) errors are parsed
+// and returned as-is, while known errors are returned as a formatted error message.
 func (c *Client) doRequest(method string, endpoint string, requestBody interface{}, queryParams map[string]string) ([]byte, error) {
 	req, err := c.buildRequest(method, endpoint, requestBody, queryParams)
 	if err != nil {
@@ -44,13 +58,24 @@ func (c *Client) doRequest(method string, endpoint string, requestBody interface
 	if err != nil {
 		return nil, err
 	}
+	defer res.Body.Close()
+
 	switch {
 	case res.StatusCode == 401:
 		return nil, fmt.Errorf("Unauthorized request to %s. Please check your API key.", req.URL)
 	case res.StatusCode < 200 || res.StatusCode >= 300:
-		return nil, fmt.Errorf("Failed to perform request to %s with status code %d.", req.URL, res.StatusCode)
+		parsedBody, err := io.ReadAll(res.Body)
+		if err != nil {
+			return nil, err
+		}
+		errorResponse := ErrorResponse{}
+		fmt.Sprintln(string(parsedBody))
+		if err := json.Unmarshal(parsedBody, &errorResponse); err != nil {
+			return nil, fmt.Errorf("Failed to perform request to %s with status code %d and response body: %s", req.URL, res.StatusCode, errorResponse.Message)
+		}
+
+		return nil, fmt.Errorf(errorResponse.Message)
 	}
-	defer res.Body.Close()
 
 	parsedBody, err := io.ReadAll(res.Body)
 	if err != nil {
@@ -60,6 +85,10 @@ func (c *Client) doRequest(method string, endpoint string, requestBody interface
 	return parsedBody, err
 }
 
+// buildRequest creates an HTTP request with the provided method, endpoint, body, and query parameters.
+// The request includes Statsig-specific headers and metadata, such as the SDK type and version.
+//
+// Uniquely, the API Key is included in a custom STATSIG-API-KEY header, rather than the standard Authorization header.
 func (c *Client) buildRequest(method, endpoint string, body interface{}, queryParams map[string]string) (*http.Request, error) {
 	var bodyBuf io.Reader
 	if body != nil {

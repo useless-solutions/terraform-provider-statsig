@@ -8,21 +8,11 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
-type GetTagsAPIResponse struct {
-	Message string          `json:"message"`
-	Data    []TagAPIRequest `json:"data"`
-}
-
 type TagAPIRequest struct {
 	ID          string `json:"id"`
 	Name        string `json:"name"`
 	Description string `json:"description"`
 	IsCore      bool   `json:"isCore"`
-}
-
-type CreateTagAPIResponse struct {
-	Message string        `json:"message"`
-	Data    TagAPIRequest `json:"data"`
 }
 
 func (c *Client) GetTags(ctx context.Context) ([]TagAPIRequest, error) {
@@ -33,8 +23,8 @@ func (c *Client) GetTags(ctx context.Context) ([]TagAPIRequest, error) {
 	}
 
 	// Log the response body
-	tflog.Debug(ctx, "Response Body: %s", map[string]interface{}{"response": string(response)})
-	tagsResponse := GetTagsAPIResponse{}
+	tflog.Debug(ctx, fmt.Sprintf("Response Body: %s", map[string]interface{}{"response": string(response)}))
+	tagsResponse := APIListResponse[TagAPIRequest]{}
 	if err := json.Unmarshal(response, &tagsResponse); err != nil {
 		return nil, err
 	}
@@ -42,29 +32,24 @@ func (c *Client) GetTags(ctx context.Context) ([]TagAPIRequest, error) {
 	return tagsResponse.Data, nil
 }
 
-func (c *Client) GetTag(ctx context.Context, tagID string) (*TagAPIRequest, error) {
-	// Get all tags and find the one with the matching ID
-	tags, err := c.GetTags(ctx)
+// GetTag retrieves a tag by its name from the Statsig API.
+//
+// The API does not use IDs for identifying unique objects, so we must retrieve the tag by its Name.
+func (c *Client) GetTag(ctx context.Context, tagName string) (*TagAPIRequest, error) {
+	response, err := c.Get(fmt.Sprintf("tags/%s", tagName), nil)
 	if err != nil {
+		tflog.Error(ctx, fmt.Sprintf("Error getting tag: %s", err))
 		return nil, err
 	}
 
-	var tag TagAPIRequest
-	for _, t := range tags {
-		if t.ID == tagID {
-			tag = t
-			tflog.Trace(ctx, fmt.Sprintf("Successfully tag with ID: %s", tagID))
-			break
-		}
+	tag := APIResponse[TagAPIRequest]{}
+	if err := json.Unmarshal(response, &tag); err != nil {
+		tflog.Error(ctx, fmt.Sprintf("Error unmarshalling tag: %s", err))
+		return nil, err
 	}
 
-	// Log an error if the the tag is null
-	if tag == (TagAPIRequest{}) {
-		tflog.Error(ctx, fmt.Sprintf("Tag with ID %s not found.", tagID))
-		return nil, fmt.Errorf("Tag with ID '%s' not found.", tagID)
-	}
-
-	return &tag, nil
+	tflog.Trace(ctx, fmt.Sprintf("Tag retrieved with Name: %s; and ID: %s", tag.Data.Name, tag.Data.ID))
+	return &tag.Data, nil
 }
 
 func (c *Client) CreateTag(ctx context.Context, tag TagAPIRequest) (*TagAPIRequest, error) {
@@ -76,14 +61,12 @@ func (c *Client) CreateTag(ctx context.Context, tag TagAPIRequest) (*TagAPIReque
 
 	// Log the response body
 	tflog.Debug(ctx, fmt.Sprintf("Create tag response: %s", response))
-	createdTag := CreateTagAPIResponse{}
+	createdTag := APIResponse[TagAPIRequest]{}
 	if err := json.Unmarshal(response, &createdTag); err != nil {
 		tflog.Error(ctx, fmt.Sprintf("Error unmarshalling tag: %s", err))
 		return nil, err
 	}
 
-	tflog.Debug(ctx, fmt.Sprintf("Returning created tag: %+v", createdTag.Data))
-	tflog.Debug(ctx, fmt.Sprintf("Full response: %+v", createdTag))
 	tflog.Trace(ctx, fmt.Sprintf("Tag created with ID: %s", createdTag.Data.ID))
 
 	return &createdTag.Data, nil
