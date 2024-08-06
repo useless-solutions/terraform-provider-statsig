@@ -36,20 +36,28 @@ func (c *Client) GetTags(ctx context.Context) ([]TagAPIRequest, error) {
 //
 // The API does not use IDs for identifying unique objects, so we must retrieve the tag by its Name.
 func (c *Client) GetTag(ctx context.Context, tagName string) (*TagAPIRequest, error) {
-	response, err := c.Get(fmt.Sprintf("tags/%s", tagName), nil)
+	// Get all tags and find the one with the matching ID
+	tags, err := c.GetTags(ctx)
 	if err != nil {
-		tflog.Error(ctx, fmt.Sprintf("Error getting tag: %s", err))
 		return nil, err
 	}
 
-	tag := APIResponse[TagAPIRequest]{}
-	if err := json.Unmarshal(response, &tag); err != nil {
-		tflog.Error(ctx, fmt.Sprintf("Error unmarshalling tag: %s", err))
-		return nil, err
+	var tag TagAPIRequest
+	for _, t := range tags {
+		if t.Name == tagName {
+			tag = t
+			tflog.Trace(ctx, fmt.Sprintf("Tag retrieved with Name: %s; and ID: %s", tag.Name, tag.ID))
+			break
+		}
 	}
 
-	tflog.Trace(ctx, fmt.Sprintf("Tag retrieved with Name: %s; and ID: %s", tag.Data.Name, tag.Data.ID))
-	return &tag.Data, nil
+	// Log an error if the the tag is null
+	if tag == (TagAPIRequest{}) {
+		tflog.Error(ctx, fmt.Sprintf("Tag with Name %s not found.", tagName))
+		return nil, fmt.Errorf("Tag with Name '%s' not found.", tagName)
+	}
+
+	return &tag, nil
 }
 
 func (c *Client) CreateTag(ctx context.Context, tag TagAPIRequest) (*TagAPIRequest, error) {
