@@ -36,15 +36,39 @@ func NewClient(_ context.Context, apiKey string) (*Client, error) {
 	}, nil
 }
 
+// Get performs a GET request with the provided endpoint and queryParams.
+// There is no request body.
+//
+// Get returns the response body as a byte slice, or an error if the request fails.
 func (c *Client) Get(endpoint string, queryParams map[string]string) ([]byte, error) {
 	return c.doRequest("GET", endpoint, nil, queryParams)
 }
 
+// Post performs a POST request with the provided endpoint and requestBody.
+// The request body is marshalled into JSON before being sent.
+//
+// Post returns the response body as a byte slice, or an error if the request fails.
 func (c *Client) Post(endpoint string, requestBody interface{}) ([]byte, error) {
 	return c.doRequest("POST", endpoint, requestBody, nil)
 }
 
-// doRequest performs an HTTP request that is built with the provided method, endpoint, body, and query parameters.
+// Patch performs a PATCH request with the provided endpoint and requestBody.
+// The request body is marshalled into JSON before being sent.
+//
+// Patch returns the response body as a byte slice, or an error if the request fails.
+func (c *Client) Patch(endpoint string, requestBody interface{}) ([]byte, error) {
+	return c.doRequest("PATCH", endpoint, requestBody, nil)
+}
+
+// Delete performs a DELETE request with the provided endpoint and queryParams.
+// There is no request body.
+//
+// Delete returns the response body as a byte slice, or an error if the request fails.
+func (c *Client) Delete(endpoint string, queryParams map[string]string) ([]byte, error) {
+	return c.doRequest("DELETE", endpoint, nil, queryParams)
+}
+
+// doRequest performs an HTTP request that is built with the provided method, endpoint, body, and queryParams.
 // The request is first build using the buildRequest method, and then executed using the Statsig Client's HTTP client.
 //
 // The API returns an error message in the response body when an error occurs. Unknown (unexpected) errors are parsed

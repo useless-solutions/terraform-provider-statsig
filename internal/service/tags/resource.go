@@ -47,6 +47,8 @@ func (r *TagResource) Schema(ctx context.Context, req resource.SchemaRequest, re
 				MarkdownDescription: "The description of this tag",
 				Required:            true,
 			},
+			// The IsCore attribute is read-only, as only one tag can be a Core tag.
+			// TODO: Do not allow the user to set this value. It will default to false.
 			"is_core": schema.BoolAttribute{
 				MarkdownDescription: "Whether or not the tag is a Core tag",
 				Optional:            true,
@@ -167,34 +169,77 @@ func (r *TagResource) Read(ctx context.Context, req resource.ReadRequest, resp *
 	}
 }
 
-/*
-The API does not support updating. This resource is immutable.
-
-If the user wants to change a tag, they should create a new one and manually delete the old one in the Console.
-This is a limitation of the Statsig API.
-
-This method returns an error to the user to inform them of this limitation.
-*/
+// Update changes the attributes of the tag as specified in the Terraform plan.
+//
+// The ID of the tag is not modified, as it is immutable in the Statsig API. Additionally, the IsCore attribute cannot
+// be modified via the API. This is a limitation of the Statsig API.
 func (r *TagResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	resp.Diagnostics.AddError(
-		"Update Not Supported",
-		"Tags are immutable in the Statsig API. If you need to change a tag, create a new one and manually delete the old one in the Console.",
-	)
+	var plan Tag
+	var state Tag
+
+	// Read Terraform plan data into the model
+	resp.Diagnostics.Append(req.Plan.Get(ctx, &plan)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	// Get the current state of the resource
+	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	// Map the Terraform plan data to the API request model
+	apiReq := statsig.TagAPIRequest{
+		ID:          plan.ID.ValueString(),
+		Name:        plan.Name.ValueString(),
+		Description: plan.Description.ValueString(),
+		IsCore:      plan.IsCore.ValueBool(),
+	}
+
+	// Create the tag
+	tag, err := r.client.UpdateTag(ctx, state.Name.ValueString(), apiReq)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error Updating Tag",
+			fmt.Sprintf("Unable to update tag, got error: %s", err),
+		)
+		return
+	}
+
+	// Update the plan attributes with the tag attributes
+	plan = Tag{
+		ID:          types.StringValue(tag.ID),
+		Name:        types.StringValue(tag.Name),
+		Description: types.StringValue(tag.Description),
+		IsCore:      plan.IsCore, // IsCore is not modifiable via the API. Set the value to the current state.
+	}
+
+	tflog.Trace(ctx, fmt.Sprintf("Tag created with Name: %s; and ID: %s", plan.Name, plan.ID))
+
+	// Save data into Terraform state
+	resp.Diagnostics.Append(resp.State.Set(ctx, &plan)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
 }
 
-/*
-The API does not support deleting. This resource is immutable.
-
-If the user wants to delete a tag, they should do so manually in the Console. Following that, they can remove the tag from the Terraform state.
-This is a limitation of the Statsig API.
-
-We will return an error to the user to inform them of this limitation.
-*/
 func (r *TagResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
-	resp.Diagnostics.AddError(
-		"Delete Not Supported",
-		"Tags are immutable in the Statsig API. If you need to delete a tag, do so manually in the Console. Following that, remove the tag from the Terraform state. Do this using the `terraform state rm` command.",
-	)
+	var state Tag
+
+	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	if err := r.client.DeleteTag(ctx, state.Name.ValueString()); err != nil {
+		resp.Diagnostics.AddError(
+			"Error Deleting Tag",
+			"Unable to delete tag, unexpected error: "+err.Error(),
+		)
+		return
+	}
 }
 
 // TODO: Need to implement and test this functionality.
