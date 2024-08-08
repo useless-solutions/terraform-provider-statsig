@@ -84,11 +84,10 @@ func (r *TagResource) Configure(ctx context.Context, req resource.ConfigureReque
 	r.client = client
 }
 
-/*
-Create a new tag with the provided attributes.
-
-The ID of the created tag is saved into the Terraform state once the value is returned from the API.
-*/
+// Create builds a new tag with the provided attributes.
+//
+// The ID of the created tag is saved into the Terraform state once the value is returned from the API.
+// Statsig references objects by Name, which is unique. The ID is not used for identifying unique objects.
 func (r *TagResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
 	var plan Tag
 
@@ -124,7 +123,7 @@ func (r *TagResource) Create(ctx context.Context, req resource.CreateRequest, re
 		IsCore:      types.BoolValue(tag.IsCore),
 	}
 
-	tflog.Trace(ctx, fmt.Sprintf("Tag created with ID: %s", plan.ID))
+	tflog.Trace(ctx, fmt.Sprintf("Tag created with Name: %s; and ID: %s", plan.Name, plan.ID))
 
 	// Save data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &plan)...)
@@ -133,9 +132,7 @@ func (r *TagResource) Create(ctx context.Context, req resource.CreateRequest, re
 	}
 }
 
-/*
-Read the tag from the API and update the Terraform state with the tag attributes.
-*/
+// Read fetches the tag from the API and updates the Terraform state with the tag attributes.
 func (r *TagResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
 	var state Tag
 
@@ -146,7 +143,7 @@ func (r *TagResource) Read(ctx context.Context, req resource.ReadRequest, resp *
 	}
 
 	// Get the tag from the API
-	tag, err := r.client.GetTag(ctx, state.ID.ValueString()+"fs")
+	tag, err := r.client.GetTag(ctx, state.Name.ValueString())
 	if err != nil {
 		resp.Diagnostics.AddError(
 			"Client Error",
