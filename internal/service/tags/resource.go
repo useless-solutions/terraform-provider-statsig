@@ -176,10 +176,49 @@ This is a limitation of the Statsig API.
 This method returns an error to the user to inform them of this limitation.
 */
 func (r *TagResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	resp.Diagnostics.AddError(
-		"Update Not Supported",
-		"Tags are immutable in the Statsig API. If you need to change a tag, create a new one and manually delete the old one in the Console.",
-	)
+	var plan Tag
+
+	// Read Terraform plan data into the model
+	resp.Diagnostics.Append(req.Plan.Get(ctx, &plan)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	// Map the Terraform plan data to the API request model
+	apiReq := statsig.TagAPIRequest{
+		ID:          plan.ID.ValueString(),
+		Name:        plan.Name.ValueString(),
+		Description: plan.Description.ValueString(),
+		IsCore:      plan.IsCore.ValueBool(),
+	}
+
+	// Create the tag
+	tag, err := r.client.UpdateTag(ctx, apiReq)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Client Error",
+			fmt.Sprintf("Unable to create tag, got error: %s", err),
+		)
+		return
+	}
+
+	// Update the plan attributes with the tag attributes
+	plan = Tag{
+		ID:          types.StringValue(tag.ID),
+		Name:        types.StringValue(tag.Name),
+		Description: types.StringValue(tag.Description),
+		IsCore:      types.BoolValue(tag.IsCore),
+	}
+
+	tflog.Trace(ctx, fmt.Sprintf("Tag created with Name: %s; and ID: %s", plan.Name, plan.ID))
+
+	// Save data into Terraform state
+	resp.Diagnostics.Append(resp.State.Set(ctx, &plan)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
 }
 
 /*
