@@ -72,10 +72,10 @@ func (c *Client) CreateTag(ctx context.Context, tag TagAPIRequest) (*TagAPIReque
 	return &createdTag.Data, nil
 }
 
-func (c *Client) UpdateTag(ctx context.Context, tag TagAPIRequest) (*TagAPIRequest, error) {
-	response, err := c.Patch(fmt.Sprintf("tags/%s", tag.Name), tag)
+func (c *Client) UpdateTag(ctx context.Context, tagName string, planTag TagAPIRequest) (*TagAPIRequest, error) {
+	response, err := c.Patch(fmt.Sprintf("tags/%s", tagName), planTag)
 	if err != nil {
-		tflog.Error(ctx, fmt.Sprintf("Error updating tag: %s", err))
+		tflog.Error(ctx, fmt.Sprintf("Error updating tag '%s': %s", tagName, err))
 		return nil, err
 	}
 

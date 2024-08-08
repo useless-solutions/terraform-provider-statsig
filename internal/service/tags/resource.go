@@ -47,6 +47,8 @@ func (r *TagResource) Schema(ctx context.Context, req resource.SchemaRequest, re
 				MarkdownDescription: "The description of this tag",
 				Required:            true,
 			},
+			// The IsCore attribute is read-only, as only one tag can be a Core tag.
+			// TODO: Do not allow the user to set this value. It will default to false.
 			"is_core": schema.BoolAttribute{
 				MarkdownDescription: "Whether or not the tag is a Core tag",
 				Optional:            true,
@@ -173,10 +175,16 @@ func (r *TagResource) Read(ctx context.Context, req resource.ReadRequest, resp *
 // be modified via the API. This is a limitation of the Statsig API.
 func (r *TagResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
 	var plan Tag
+	var state Tag
 
 	// Read Terraform plan data into the model
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &plan)...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
 
+	// Get the current state of the resource
+	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
@@ -190,11 +198,11 @@ func (r *TagResource) Update(ctx context.Context, req resource.UpdateRequest, re
 	}
 
 	// Create the tag
-	tag, err := r.client.UpdateTag(ctx, apiReq)
+	tag, err := r.client.UpdateTag(ctx, state.Name.ValueString(), apiReq)
 	if err != nil {
 		resp.Diagnostics.AddError(
-			"Client Error",
-			fmt.Sprintf("Unable to create tag, got error: %s", err),
+			"Error Updating Tag",
+			fmt.Sprintf("Unable to update tag, got error: %s", err),
 		)
 		return
 	}
