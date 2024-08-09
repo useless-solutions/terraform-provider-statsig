@@ -43,3 +43,8 @@ verify-provider-install: build
 	@echo "$(OK_COLOR)==> Verifying provider$(NO_COLOR)"
 	@cd examples/provider-install-verification && terraform plan
 	@echo "$(OK_COLOR)==> Provider verified$(NO_COLOR)"
+
+format:
+	@echo "$(OK_COLOR)==> Formatting code$(NO_COLOR)"
+	@go fmt ./...
+	@echo "$(OK_COLOR)==> Code formatted$(NO_COLOR)"
