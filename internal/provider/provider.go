@@ -6,6 +6,7 @@ import (
 	"regexp"
 
 	"github.com/useless-solutions/terraform-provider-statsig/internal/service/tags"
+	"github.com/useless-solutions/terraform-provider-statsig/internal/service/target_apps"
 	client "github.com/useless-solutions/terraform-provider-statsig/internal/statsig"
 
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
@@ -129,6 +130,7 @@ func (p *StatsigProvider) Configure(ctx context.Context, req provider.ConfigureR
 func (p *StatsigProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		tags.NewTagResource,
+		target_apps.NewTargetAppResource,
 	}
 }
 
@@ -136,6 +138,7 @@ func (p *StatsigProvider) Resources(ctx context.Context) []func() resource.Resou
 func (p *StatsigProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		tags.NewTagsDataSource,
+		target_apps.NewTargetAppsDataSource,
 	}
 }
 
