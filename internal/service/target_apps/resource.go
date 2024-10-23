@@ -112,6 +112,7 @@ func (r *TargetAppResource) Create(ctx context.Context, req resource.CreateReque
 
 	// Update the plan attributes with the target_app attributes
 	plan = TargetApp{
+		ID:          types.StringValue(target_app.ID),
 		Name:        types.StringValue(target_app.Name),
 		Description: types.StringValue(target_app.Description),
 	}
@@ -136,7 +137,7 @@ func (r *TargetAppResource) Read(ctx context.Context, req resource.ReadRequest, 
 	}
 
 	// Get the target_app from the API
-	target_app, err := r.client.GetTargetApp(ctx, state.ID.ValueString())
+	target_app, err := r.client.GetTargetApp(ctx, state.Name.ValueString())
 	if err != nil {
 		resp.Diagnostics.AddError(
 			"Client Error",

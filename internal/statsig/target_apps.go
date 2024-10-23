@@ -17,16 +17,6 @@ type TargetAppAPIRequest struct {
 	Experiments    []string `json:"experiments"`
 }
 
-type CreateTargetAppAPIResponse struct {
-	Message string      `json:"message"`
-	Data    []TargetApp `json:"data"`
-}
-
-type TargetApp struct {
-	Name string `json:"name"`
-	ID   string `json:"id"`
-}
-
 func (c *Client) GetTargetApps(ctx context.Context) ([]TargetAppAPIRequest, error) {
 	params := map[string]string{"page": "1", "limit": "100"}
 	response, err := c.Get("target_apps", params)
