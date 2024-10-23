@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "statsig" {
-  console_api_key = "console-pGUGoOTyFoUU8Vsg8csH1Q7y18N8C5d3bjObNWy6G8O"
+  console_api_key = "console-xxx"
 }
 
 data "statsig_tags" "example" {}

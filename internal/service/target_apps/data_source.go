@@ -99,10 +99,6 @@ func (d *TargetAppsDataSource) Read(ctx context.Context, req datasource.ReadRequ
 		})
 	}
 
-	// Write logs using the tflog package
-	// Documentation: https://terraform.io/plugin/log
-	tflog.Trace(ctx, "read a data source")
-
 	// Save data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
