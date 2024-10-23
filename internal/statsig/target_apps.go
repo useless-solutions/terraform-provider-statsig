@@ -54,7 +54,7 @@ func (c *Client) CreateTargetApp(ctx context.Context, targetApp TargetAppAPIRequ
 }
 
 func (c *Client) GetTargetApp(ctx context.Context, targetAppID string) (*TargetAppAPIRequest, error) {
-	response, err := c.Get(fmt.Sprintf("target_apps/%", targetAppID), nil)
+	response, err := c.Get(fmt.Sprintf("target_apps/%s", targetAppID), nil)
 	if err != nil {
 		tflog.Error(ctx, fmt.Sprintf("Error getting target app: %s", err))
 		return nil, err
