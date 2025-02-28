@@ -17,7 +17,7 @@ type TagAPIRequest struct {
 
 const tagsEndpoint = "tags"
 
-func (c *Client) GetTags(ctx context.Context) ([]TagAPIRequest, error) {
+func (c *Client) GetAllTags(ctx context.Context) ([]TagAPIRequest, error) {
 	params := QueryParams{"page": "1", "limit": "100"}
 	response, err := c.Get(tagsEndpoint, params)
 	if err != nil {
@@ -38,7 +38,7 @@ func (c *Client) GetTags(ctx context.Context) ([]TagAPIRequest, error) {
 //
 // The API does not use IDs for identifying unique objects, so we must retrieve the tag by its Name.
 func (c *Client) GetTag(ctx context.Context, tagName string) (*TagAPIRequest, error) {
-	response, err := c.Get(createEndpointPath(tagName), nil)
+	response, err := c.Get(createEndpointPath(tagsEndpoint, tagName), nil)
 	if err != nil {
 		tflog.Error(ctx, fmt.Sprintf("Error getting tag: %s", err))
 		return nil, err
@@ -75,7 +75,7 @@ func (c *Client) CreateTag(ctx context.Context, tag TagAPIRequest) (*TagAPIReque
 }
 
 func (c *Client) UpdateTag(ctx context.Context, tagName string, planTag TagAPIRequest) (*TagAPIRequest, error) {
-	response, err := c.Patch(createEndpointPath(tagName), planTag)
+	response, err := c.Patch(createEndpointPath(tagsEndpoint, tagName), planTag)
 	if err != nil {
 		tflog.Error(ctx, fmt.Sprintf("Error updating tag '%s': %s", tagName, err))
 		return nil, err
@@ -95,7 +95,7 @@ func (c *Client) UpdateTag(ctx context.Context, tagName string, planTag TagAPIRe
 }
 
 func (c *Client) DeleteTag(ctx context.Context, tagName string) error {
-	_, err := c.Delete(createEndpointPath(tagName), nil)
+	_, err := c.Delete(createEndpointPath(tagsEndpoint, tagName), nil)
 	if err != nil {
 		tflog.Error(ctx, fmt.Sprintf("Error deleting tag: %s", err))
 		return err
@@ -104,8 +104,4 @@ func (c *Client) DeleteTag(ctx context.Context, tagName string) error {
 	tflog.Trace(ctx, fmt.Sprintf("Tag deleted with Name: %s", tagName))
 
 	return nil
-}
-
-func createEndpointPath(path string) string {
-	return fmt.Sprintf("%s/%s", tagsEndpoint, path)
 }

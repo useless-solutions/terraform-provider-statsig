@@ -1,0 +1,779 @@
+2024-08-18T14:38:16.378-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:38:16.378-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:38:16.378-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:38:16.378-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:38:16.378-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:38:16.378-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:38:16.378-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:38:16.378-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:38:16.378-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:38:16.379-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:38:16.379-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:38:16.380-0400 [DEBUG] New state was assigned lineage "2088a30b-9fa9-622b-f730-e7abc19ef2cf"
+2024-08-18T14:38:16.380-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:38:16.380-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:38:16.380-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:38:16.432-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:38:16.433-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:38:16.433-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:38:16.435-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:38:16.435-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:38:16.435-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:38:16.442-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:38:16.446-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=58925
+2024-08-18T14:38:16.446-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:38:17.230-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:38:17.230-0400
+2024-08-18T14:38:17.237-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin2460021799 network=unix timestamp=2024-08-18T14:38:17.237-0400
+2024-08-18T14:38:17.237-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:38:17.244-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: diagnostic_severity=ERROR tf_proto_version=6.6 tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=098c6209-7c82-16f3-de8a-13a3c101c3d8
+  diagnostic_detail=
+  | When validating the schema, an implementation issue was found. This is always an issue with the provider and should be reported to the provider developers.
+  |
+  | "rules" is an attribute that contains a collection type with a nested dynamic type.
+  |
+  | Dynamic types inside of collections are not currently supported in terraform-plugin-framework. If underlying dynamic values are required, replace the "rules" attribute definition with DynamicAttribute instead.
+   @module=sdk.proto diagnostic_summary="Invalid Schema Implementation" tf_rpc=GetProviderSchema @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 timestamp=2024-08-18T14:38:17.244-0400
+2024-08-18T14:38:17.245-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:38:17.245-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=58925
+2024-08-18T14:38:17.245-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:41:05.829-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:41:05.829-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:41:05.829-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:41:05.829-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:41:05.829-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:41:05.829-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:41:05.829-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:41:05.829-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:41:05.829-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:41:05.830-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:41:05.830-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:41:05.831-0400 [DEBUG] New state was assigned lineage "5bf604f0-1ae5-21ca-cd87-59602baa688e"
+2024-08-18T14:41:05.831-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:41:05.831-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:41:05.831-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:41:05.834-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:41:05.835-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:41:05.835-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:41:05.837-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:41:05.837-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:41:05.837-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:41:05.844-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:41:05.847-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=60158
+2024-08-18T14:41:05.847-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:41:06.461-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:41:06.461-0400
+2024-08-18T14:41:06.468-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:41:06.468-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin3013979969 network=unix timestamp=2024-08-18T14:41:06.467-0400
+2024-08-18T14:41:06.475-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 @module=sdk.proto
+  diagnostic_detail=
+  | When validating the schema, an implementation issue was found. This is always an issue with the provider and should be reported to the provider developers.
+  |
+  | "rules" is an attribute that contains a collection type with a nested dynamic type.
+  |
+  | Dynamic types inside of collections are not currently supported in terraform-plugin-framework. If underlying dynamic values are required, replace the "rules" attribute definition with DynamicAttribute instead.
+   tf_rpc=GetProviderSchema diagnostic_severity=ERROR diagnostic_summary="Invalid Schema Implementation" tf_proto_version=6.6 tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=1cf6d5c1-c113-79fe-4127-dcfbaadc91de timestamp=2024-08-18T14:41:06.475-0400
+2024-08-18T14:41:06.476-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:41:06.477-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=60158
+2024-08-18T14:41:06.477-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:42:22.251-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:42:22.252-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:42:22.252-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:42:22.252-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:42:22.252-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:42:22.252-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:42:22.252-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:42:22.252-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:42:22.252-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:42:22.253-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:42:22.254-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:42:22.258-0400 [DEBUG] New state was assigned lineage "497762ab-f776-ca54-0532-6db86e0c0726"
+2024-08-18T14:42:22.258-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:42:22.258-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:42:22.258-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:42:22.261-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:42:22.262-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:42:22.264-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:42:22.270-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:42:22.271-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:42:22.272-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:42:22.283-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:42:22.285-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=60892
+2024-08-18T14:42:22.285-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:42:22.890-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:42:22.889-0400
+2024-08-18T14:42:22.899-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:42:22.899-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin2314604418 network=unix timestamp=2024-08-18T14:42:22.899-0400
+2024-08-18T14:42:22.912-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: diagnostic_summary="Invalid Attribute Implementation" tf_proto_version=6.6 tf_rpc=GetProviderSchema @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 @module=sdk.proto
+  diagnostic_detail=
+  | When validating the schema, an implementation issue was found. This is always an issue with the provider and should be reported to the provider developers.
+  |
+  | "rules.return_value" is missing the CustomType or ElementType field on a collection Attribute. One of these fields is required to prevent other unexpected errors or panics.
+   diagnostic_severity=ERROR tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=1ef0a478-1464-5bd0-0061-1c5f1f704a2f timestamp=2024-08-18T14:42:22.912-0400
+2024-08-18T14:42:22.914-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:42:22.915-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=60892
+2024-08-18T14:42:22.915-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:45:29.998-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:45:29.999-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:45:29.999-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:45:29.999-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:45:29.999-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:45:29.999-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:45:29.999-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:45:29.999-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:45:29.999-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:45:29.999-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:45:29.999-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:45:30.001-0400 [DEBUG] New state was assigned lineage "6e2bf043-62a6-3dfc-5ba7-28ef4e465671"
+2024-08-18T14:45:30.001-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:45:30.001-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:45:30.001-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:45:30.004-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:45:30.004-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:45:30.004-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:45:30.006-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:45:30.007-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:45:30.007-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:45:30.013-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:45:30.015-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=62233
+2024-08-18T14:45:30.015-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:45:30.810-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:45:30.810-0400
+2024-08-18T14:45:30.816-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin3614145430 network=unix timestamp=2024-08-18T14:45:30.816-0400
+2024-08-18T14:45:30.817-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:45:30.825-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic:
+  diagnostic_detail=
+  | When validating the schema, an implementation issue was found. This is always an issue with the provider and should be reported to the provider developers.
+  |
+  | "rules" is an attribute that contains a collection type with a nested dynamic type.
+  |
+  | Dynamic types inside of collections are not currently supported in terraform-plugin-framework. If underlying dynamic values are required, replace the "rules" attribute definition with DynamicAttribute instead.
+   diagnostic_summary="Invalid Schema Implementation" tf_rpc=GetProviderSchema @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 @module=sdk.proto diagnostic_severity=ERROR tf_proto_version=6.6 tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=a8590c12-03df-7431-196f-21865fdfd1ef timestamp=2024-08-18T14:45:30.825-0400
+2024-08-18T14:45:30.825-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 tf_rpc=GetProviderSchema diagnostic_severity=ERROR diagnostic_summary="Invalid Schema Implementation" tf_proto_version=6.6 tf_provider_addr=registry.terraform.io/tbd/statsig @module=sdk.proto
+  diagnostic_detail=
+  | When validating the schema, an implementation issue was found. This is always an issue with the provider and should be reported to the provider developers.
+  |
+  | "rules.return_value" is an attribute that contains a collection type with a nested dynamic type.
+  |
+  | Dynamic types inside of collections are not currently supported in terraform-plugin-framework. If underlying dynamic values are required, replace the "rules.return_value" attribute definition with DynamicAttribute instead.
+   tf_req_id=a8590c12-03df-7431-196f-21865fdfd1ef timestamp=2024-08-18T14:45:30.825-0400
+2024-08-18T14:45:30.826-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:45:30.827-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=62233
+2024-08-18T14:45:30.827-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:45:50.225-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:45:50.226-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:45:50.226-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:45:50.226-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:45:50.226-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:45:50.226-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:45:50.226-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:45:50.226-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:45:50.226-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:45:50.227-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:45:50.227-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:45:50.230-0400 [DEBUG] New state was assigned lineage "b9ccbef9-9389-975e-b5fc-14dcc3eea95a"
+2024-08-18T14:45:50.230-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:45:50.230-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:45:50.230-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:45:50.233-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:45:50.233-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:45:50.234-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:45:50.239-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:45:50.239-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:45:50.239-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:45:50.248-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:45:50.250-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=62433
+2024-08-18T14:45:50.250-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:45:50.842-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:45:50.842-0400
+2024-08-18T14:45:50.848-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:45:50.849-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin3010748959 network=unix timestamp=2024-08-18T14:45:50.848-0400
+2024-08-18T14:45:50.860-0400 [DEBUG] No provider meta schema returned
+2024-08-18T14:45:50.860-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:45:50.861-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=62433
+2024-08-18T14:45:50.861-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:45:50.861-0400 [DEBUG] Building and walking validate graph
+2024-08-18T14:45:50.862-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:45:50.863-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:45:50.863-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test]
+2024-08-18T14:45:50.863-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:45:50.863-0400 [DEBUG] Starting graph walk: walkValidate
+2024-08-18T14:45:50.864-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:45:50.864-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:45:50.867-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:45:50.868-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=62448
+2024-08-18T14:45:50.868-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:45:51.130-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:45:51.130-0400
+2024-08-18T14:45:51.136-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:45:51.136-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: network=unix address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin2361944887 timestamp=2024-08-18T14:45:51.136-0400
+2024-08-18T14:45:51.143-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:45:51.143-0400 [ERROR] vertex "statsig_dynamic_config.test" error: Missing required argument
+2024-08-18T14:45:51.143-0400 [ERROR] vertex "statsig_dynamic_config.test" error: Missing required argument
+2024-08-18T14:45:51.143-0400 [ERROR] vertex "statsig_dynamic_config.test" error: Missing required argument
+2024-08-18T14:45:51.145-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:45:51.146-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=62448
+2024-08-18T14:45:51.146-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:48:23.826-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:48:23.826-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:48:23.826-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:48:23.826-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:48:23.826-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:48:23.826-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:48:23.826-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:48:23.826-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:48:23.827-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:48:23.827-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:48:23.828-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:48:23.829-0400 [DEBUG] New state was assigned lineage "6e19b4a1-1902-15e3-a9a0-c6e810ef0703"
+2024-08-18T14:48:23.829-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:48:23.829-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:48:23.829-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:48:23.832-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:48:23.832-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:48:23.832-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:48:23.835-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:48:23.835-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:48:23.835-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:48:23.841-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:48:23.843-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63479
+2024-08-18T14:48:23.843-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:48:23.966-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:48:23.965-0400
+2024-08-18T14:48:23.974-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:48:23.974-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin2641982454 network=unix timestamp=2024-08-18T14:48:23.974-0400
+2024-08-18T14:48:23.989-0400 [DEBUG] No provider meta schema returned
+2024-08-18T14:48:23.990-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:48:23.990-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63479
+2024-08-18T14:48:23.990-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:48:23.990-0400 [DEBUG] Building and walking validate graph
+2024-08-18T14:48:23.991-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:48:23.991-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:48:23.991-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test]
+2024-08-18T14:48:23.991-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:48:23.991-0400 [DEBUG] Starting graph walk: walkValidate
+2024-08-18T14:48:23.991-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:48:23.991-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:48:23.994-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:48:23.996-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63480
+2024-08-18T14:48:23.996-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:48:24.001-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:48:24.001-0400
+2024-08-18T14:48:24.008-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:48:24.008-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin1046545204 network=unix timestamp=2024-08-18T14:48:24.008-0400
+2024-08-18T14:48:24.016-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:48:24.019-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:48:24.020-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63480
+2024-08-18T14:48:24.020-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:48:24.020-0400 [INFO]  backend/local: plan calling Plan
+2024-08-18T14:48:24.020-0400 [DEBUG] Building and walking plan graph for NormalMode
+2024-08-18T14:48:24.020-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:48:24.020-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:48:24.020-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test (expand)" references: []
+2024-08-18T14:48:24.020-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test (expand)]
+2024-08-18T14:48:24.021-0400 [DEBUG] Starting graph walk: walkPlan
+2024-08-18T14:48:24.021-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:48:24.021-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:48:24.023-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:48:24.025-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63481
+2024-08-18T14:48:24.025-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:48:24.031-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:48:24.031-0400
+2024-08-18T14:48:24.037-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:48:24.037-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin3817069980 network=unix timestamp=2024-08-18T14:48:24.037-0400
+2024-08-18T14:48:24.043-0400 [INFO]  provider.terraform-provider-statsig: Configuring Statsig provider: @module=statsig tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=0cbac409-3375-a72e-31be-300fa374e6c0 tf_rpc=ConfigureProvider @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:63 timestamp=2024-08-18T14:48:24.043-0400
+2024-08-18T14:48:24.044-0400 [DEBUG] provider.terraform-provider-statsig: Creating Statsig API Client: console_api_key="***" tf_provider_addr=registry.terraform.io/tbd/statsig tf_rpc=ConfigureProvider @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:107 @module=statsig tf_req_id=0cbac409-3375-a72e-31be-300fa374e6c0 timestamp=2024-08-18T14:48:24.044-0400
+2024-08-18T14:48:24.044-0400 [INFO]  provider.terraform-provider-statsig: Configured Statsig provider: console_api_key="***" tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=0cbac409-3375-a72e-31be-300fa374e6c0 tf_rpc=ConfigureProvider @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:126 success=true @module=statsig timestamp=2024-08-18T14:48:24.044-0400
+2024-08-18T14:48:24.044-0400 [DEBUG] Resource instance state not found for node "statsig_dynamic_config.test", instance statsig_dynamic_config.test
+2024-08-18T14:48:24.044-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:48:24.044-0400 [DEBUG] refresh: statsig_dynamic_config.test: no state, so not refreshing
+2024-08-18T14:48:24.044-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:48:24.047-0400 [DEBUG] provider.terraform-provider-statsig: Marking Computed attributes with null configuration values as unknown (known after apply) in the plan to prevent potential Terraform errors: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:217 tf_provider_addr=registry.terraform.io/tbd/statsig tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange @module=sdk.framework tf_req_id=87528167-e27f-89ec-ca76-dfddc8eb32c4 timestamp=2024-08-18T14:48:24.047-0400
+2024-08-18T14:48:24.047-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: @module=sdk.framework tf_attribute_path="AttributeName(\"last_modifier_name\")" tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=87528167-e27f-89ec-ca76-dfddc8eb32c4 timestamp=2024-08-18T14:48:24.047-0400
+2024-08-18T14:48:24.047-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 tf_attribute_path="AttributeName(\"id\")" tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=87528167-e27f-89ec-ca76-dfddc8eb32c4 @module=sdk.framework tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange timestamp=2024-08-18T14:48:24.047-0400
+2024-08-18T14:48:24.047-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 @module=sdk.framework tf_attribute_path="AttributeName(\"last_modifier_email\")" tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=87528167-e27f-89ec-ca76-dfddc8eb32c4 tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange timestamp=2024-08-18T14:48:24.047-0400
+2024-08-18T14:48:24.047-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=87528167-e27f-89ec-ca76-dfddc8eb32c4 tf_rpc=PlanResourceChange @module=sdk.framework tf_attribute_path="AttributeName(\"creator_email\")" tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 timestamp=2024-08-18T14:48:24.047-0400
+2024-08-18T14:48:24.047-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_attribute_path="AttributeName(\"creator_name\")" tf_req_id=87528167-e27f-89ec-ca76-dfddc8eb32c4 tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 tf_rpc=PlanResourceChange @module=sdk.framework tf_provider_addr=registry.terraform.io/tbd/statsig timestamp=2024-08-18T14:48:24.047-0400
+2024-08-18T14:48:24.049-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:48:24.049-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63481
+2024-08-18T14:48:24.049-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:48:24.050-0400 [DEBUG] building apply graph to check for errors
+2024-08-18T14:48:24.050-0400 [DEBUG] Resource state not found for node "statsig_dynamic_config.test", instance statsig_dynamic_config.test
+2024-08-18T14:48:24.050-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:48:24.050-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:48:24.050-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test (expand)" references: []
+2024-08-18T14:48:24.050-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test (expand) statsig_dynamic_config.test statsig_dynamic_config.test]
+2024-08-18T14:48:24.050-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:48:24.050-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:48:24.050-0400 [INFO]  backend/local: plan operation completed
+2024-08-18T14:48:42.627-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:48:42.627-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:48:42.627-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:48:42.627-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:48:42.627-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:48:42.627-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:48:42.627-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:48:42.628-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:48:42.628-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:48:42.628-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:48:42.630-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:48:42.634-0400 [DEBUG] New state was assigned lineage "63daff56-49a0-cb4e-5f44-530b12d5a883"
+2024-08-18T14:48:42.634-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:48:42.634-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:48:42.634-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:48:42.637-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:48:42.638-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:48:42.640-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:48:42.646-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:48:42.647-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:48:42.647-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:48:42.657-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:48:42.659-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63624
+2024-08-18T14:48:42.660-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:48:42.928-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:48:42.928-0400
+2024-08-18T14:48:42.937-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:48:42.938-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin2276431075 network=unix timestamp=2024-08-18T14:48:42.937-0400
+2024-08-18T14:48:42.953-0400 [DEBUG] No provider meta schema returned
+2024-08-18T14:48:42.954-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:48:42.954-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63624
+2024-08-18T14:48:42.954-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:48:42.955-0400 [DEBUG] Building and walking validate graph
+2024-08-18T14:48:42.956-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:48:42.957-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:48:42.957-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test]
+2024-08-18T14:48:42.957-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:48:42.957-0400 [DEBUG] Starting graph walk: walkValidate
+2024-08-18T14:48:42.960-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:48:42.960-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:48:42.963-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:48:42.965-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63625
+2024-08-18T14:48:42.965-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:48:43.229-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:48:43.229-0400
+2024-08-18T14:48:43.235-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:48:43.235-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: network=unix address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin370397354 timestamp=2024-08-18T14:48:43.235-0400
+2024-08-18T14:48:43.243-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:48:43.245-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: diagnostic_attribute="AttributeName(\"id_type\")" tf_proto_version=6.6 tf_rpc=ValidateResourceConfig @module=sdk.proto diagnostic_severity=ERROR diagnostic_summary="Invalid Attribute Value Match" tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=cf5ff2a8-f724-f8b3-7939-6e6503dbd3d6 tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 diagnostic_detail="Attribute id_type value must be one of: [\"userID\" \"stableID\"], got: \"invalidId\"" timestamp=2024-08-18T14:48:43.244-0400
+2024-08-18T14:48:43.245-0400 [ERROR] vertex "statsig_dynamic_config.test" error: Invalid Attribute Value Match
+2024-08-18T14:48:43.248-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:48:43.248-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63625
+2024-08-18T14:48:43.248-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:48:52.211-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:48:52.211-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:48:52.211-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:48:52.211-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:48:52.211-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:48:52.211-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:48:52.211-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:48:52.212-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:48:52.212-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:48:52.212-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:48:52.212-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:48:52.212-0400 [DEBUG] New state was assigned lineage "b62dfc36-a576-5595-d5af-28bee4d0d264"
+2024-08-18T14:48:52.213-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:48:52.213-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:48:52.213-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:48:52.216-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:48:52.216-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:48:52.216-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:48:52.218-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:48:52.218-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:48:52.218-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:48:52.224-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:48:52.226-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63687
+2024-08-18T14:48:52.227-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:48:52.236-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:48:52.235-0400
+2024-08-18T14:48:52.243-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:48:52.243-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: network=unix address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin2705362868 timestamp=2024-08-18T14:48:52.243-0400
+2024-08-18T14:48:52.250-0400 [DEBUG] No provider meta schema returned
+2024-08-18T14:48:52.250-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:48:52.251-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63687
+2024-08-18T14:48:52.251-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:48:52.251-0400 [DEBUG] Building and walking validate graph
+2024-08-18T14:48:52.251-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:48:52.251-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:48:52.251-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:48:52.251-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test]
+2024-08-18T14:48:52.252-0400 [DEBUG] Starting graph walk: walkValidate
+2024-08-18T14:48:52.253-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:48:52.253-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:48:52.256-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:48:52.257-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63688
+2024-08-18T14:48:52.257-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:48:52.264-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:48:52.264-0400
+2024-08-18T14:48:52.270-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:48:52.270-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin3888623013 network=unix timestamp=2024-08-18T14:48:52.270-0400
+2024-08-18T14:48:52.276-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:48:52.277-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:48:52.278-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63688
+2024-08-18T14:48:52.278-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:48:52.280-0400 [INFO]  backend/local: plan calling Plan
+2024-08-18T14:48:52.280-0400 [DEBUG] Building and walking plan graph for NormalMode
+2024-08-18T14:48:52.282-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:48:52.282-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test (expand)" references: []
+2024-08-18T14:48:52.282-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test (expand)]
+2024-08-18T14:48:52.282-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:48:52.282-0400 [DEBUG] Starting graph walk: walkPlan
+2024-08-18T14:48:52.282-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:48:52.282-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:48:52.285-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:48:52.286-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63689
+2024-08-18T14:48:52.286-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:48:52.294-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:48:52.294-0400
+2024-08-18T14:48:52.300-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:48:52.300-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin4214775778 network=unix timestamp=2024-08-18T14:48:52.300-0400
+2024-08-18T14:48:52.306-0400 [INFO]  provider.terraform-provider-statsig: Configuring Statsig provider: tf_rpc=ConfigureProvider @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:63 @module=statsig tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=f84e90a3-2e89-3e5c-b888-88bb3b53fb4c timestamp=2024-08-18T14:48:52.306-0400
+2024-08-18T14:48:52.306-0400 [DEBUG] provider.terraform-provider-statsig: Creating Statsig API Client: @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:107 @module=statsig tf_rpc=ConfigureProvider console_api_key="***" tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=f84e90a3-2e89-3e5c-b888-88bb3b53fb4c timestamp=2024-08-18T14:48:52.306-0400
+2024-08-18T14:48:52.306-0400 [INFO]  provider.terraform-provider-statsig: Configured Statsig provider: tf_rpc=ConfigureProvider tf_provider_addr=registry.terraform.io/tbd/statsig @module=statsig console_api_key="***" success=true tf_req_id=f84e90a3-2e89-3e5c-b888-88bb3b53fb4c @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:126 timestamp=2024-08-18T14:48:52.306-0400
+2024-08-18T14:48:52.307-0400 [DEBUG] Resource instance state not found for node "statsig_dynamic_config.test", instance statsig_dynamic_config.test
+2024-08-18T14:48:52.308-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:48:52.308-0400 [DEBUG] refresh: statsig_dynamic_config.test: no state, so not refreshing
+2024-08-18T14:48:52.308-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:48:52.311-0400 [DEBUG] provider.terraform-provider-statsig: Marking Computed attributes with null configuration values as unknown (known after apply) in the plan to prevent potential Terraform errors: tf_rpc=PlanResourceChange @module=sdk.framework tf_provider_addr=registry.terraform.io/tbd/statsig tf_resource_type=statsig_dynamic_config tf_req_id=8b951b1b-c444-a0d6-3511-a9d9213ff143 @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:217 timestamp=2024-08-18T14:48:52.311-0400
+2024-08-18T14:48:52.311-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: @module=sdk.framework tf_req_id=8b951b1b-c444-a0d6-3511-a9d9213ff143 tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 tf_rpc=PlanResourceChange tf_attribute_path="AttributeName(\"last_modifier_name\")" tf_provider_addr=registry.terraform.io/tbd/statsig timestamp=2024-08-18T14:48:52.311-0400
+2024-08-18T14:48:52.311-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=8b951b1b-c444-a0d6-3511-a9d9213ff143 tf_resource_type=statsig_dynamic_config tf_attribute_path="AttributeName(\"creator_name\")" @module=sdk.framework tf_rpc=PlanResourceChange @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 timestamp=2024-08-18T14:48:52.311-0400
+2024-08-18T14:48:52.311-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=8b951b1b-c444-a0d6-3511-a9d9213ff143 tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 @module=sdk.framework tf_attribute_path="AttributeName(\"last_modifier_email\")" timestamp=2024-08-18T14:48:52.311-0400
+2024-08-18T14:48:52.311-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_req_id=8b951b1b-c444-a0d6-3511-a9d9213ff143 tf_rpc=PlanResourceChange @module=sdk.framework tf_attribute_path="AttributeName(\"id\")" tf_provider_addr=registry.terraform.io/tbd/statsig tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 timestamp=2024-08-18T14:48:52.311-0400
+2024-08-18T14:48:52.311-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_req_id=8b951b1b-c444-a0d6-3511-a9d9213ff143 @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 @module=sdk.framework tf_attribute_path="AttributeName(\"creator_email\")" tf_provider_addr=registry.terraform.io/tbd/statsig tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange timestamp=2024-08-18T14:48:52.311-0400
+2024-08-18T14:48:52.313-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:48:52.313-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=63689
+2024-08-18T14:48:52.313-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:48:52.313-0400 [DEBUG] building apply graph to check for errors
+2024-08-18T14:48:52.313-0400 [DEBUG] Resource state not found for node "statsig_dynamic_config.test", instance statsig_dynamic_config.test
+2024-08-18T14:48:52.313-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:48:52.313-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:48:52.313-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test (expand)" references: []
+2024-08-18T14:48:52.313-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test (expand) statsig_dynamic_config.test statsig_dynamic_config.test]
+2024-08-18T14:48:52.313-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:48:52.313-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:48:52.314-0400 [INFO]  backend/local: plan operation completed
+2024-08-18T14:54:59.770-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:54:59.770-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:54:59.770-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:54:59.770-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:54:59.770-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:54:59.770-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:54:59.770-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:54:59.770-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:54:59.771-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:54:59.771-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:54:59.772-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:54:59.773-0400 [DEBUG] New state was assigned lineage "aa5c69a3-b5be-e139-f6ca-24ea055ed2cf"
+2024-08-18T14:54:59.773-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:54:59.773-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:54:59.773-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:54:59.778-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:54:59.778-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:54:59.778-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:54:59.781-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:54:59.781-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:54:59.781-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:54:59.788-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:54:59.790-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=66826
+2024-08-18T14:54:59.790-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:55:00.407-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:55:00.407-0400
+2024-08-18T14:55:00.413-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:55:00.413-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: network=unix address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin28264367 timestamp=2024-08-18T14:55:00.413-0400
+2024-08-18T14:55:00.422-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: diagnostic_detail="Attribute \"holdout_ids\" must be computed when using default. This is an issue with the provider and should be reported to the provider developers." tf_req_id=bb86412c-675e-f4f1-93e6-47b79744ee93 tf_rpc=GetProviderSchema @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 @module=sdk.proto diagnostic_severity=ERROR diagnostic_summary="Schema Using Attribute Default For Non-Computed Attribute" tf_proto_version=6.6 tf_provider_addr=registry.terraform.io/tbd/statsig timestamp=2024-08-18T14:55:00.422-0400
+2024-08-18T14:55:00.422-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic:
+  diagnostic_detail=
+  | When validating the schema, an implementation issue was found. This is always an issue with the provider and should be reported to the provider developers.
+  |
+  | "holdout_ids" has a default value of element type "basetypes.StringType", but the schema expects a type of "types.ListType[basetypes.StringType]". The default value must match the type of the schema.
+   diagnostic_severity=ERROR diagnostic_summary="Invalid Attribute Implementation" @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 @module=sdk.proto tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=bb86412c-675e-f4f1-93e6-47b79744ee93 tf_proto_version=6.6 tf_rpc=GetProviderSchema timestamp=2024-08-18T14:55:00.422-0400
+2024-08-18T14:55:00.422-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: tf_provider_addr=registry.terraform.io/tbd/statsig tf_rpc=GetProviderSchema @module=sdk.proto diagnostic_detail="Attribute \"target_apps\" must be computed when using default. This is an issue with the provider and should be reported to the provider developers." diagnostic_severity=ERROR diagnostic_summary="Schema Using Attribute Default For Non-Computed Attribute" tf_proto_version=6.6 tf_req_id=bb86412c-675e-f4f1-93e6-47b79744ee93 @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 timestamp=2024-08-18T14:55:00.422-0400
+2024-08-18T14:55:00.422-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: tf_rpc=GetProviderSchema tf_proto_version=6.6
+  diagnostic_detail=
+  | When validating the schema, an implementation issue was found. This is always an issue with the provider and should be reported to the provider developers.
+  |
+  | "target_apps" has a default value of element type "basetypes.StringType", but the schema expects a type of "types.ListType[basetypes.StringType]". The default value must match the type of the schema.
+   diagnostic_severity=ERROR diagnostic_summary="Invalid Attribute Implementation" tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=bb86412c-675e-f4f1-93e6-47b79744ee93 @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 @module=sdk.proto timestamp=2024-08-18T14:55:00.422-0400
+2024-08-18T14:55:00.422-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: @module=sdk.proto diagnostic_severity=ERROR tf_rpc=GetProviderSchema @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 diagnostic_summary="Schema Using Attribute Default For Non-Computed Attribute" tf_proto_version=6.6 tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=bb86412c-675e-f4f1-93e6-47b79744ee93 diagnostic_detail="Attribute \"tags\" must be computed when using default. This is an issue with the provider and should be reported to the provider developers." timestamp=2024-08-18T14:55:00.422-0400
+2024-08-18T14:55:00.422-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: diagnostic_severity=ERROR tf_proto_version=6.6 tf_req_id=bb86412c-675e-f4f1-93e6-47b79744ee93 @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 diagnostic_summary="Invalid Attribute Implementation" tf_provider_addr=registry.terraform.io/tbd/statsig tf_rpc=GetProviderSchema @module=sdk.proto
+  diagnostic_detail=
+  | When validating the schema, an implementation issue was found. This is always an issue with the provider and should be reported to the provider developers.
+  |
+  | "tags" has a default value of element type "basetypes.StringType", but the schema expects a type of "types.ListType[basetypes.StringType]". The default value must match the type of the schema.
+   timestamp=2024-08-18T14:55:00.422-0400
+2024-08-18T14:55:00.423-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:55:00.423-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=66826
+2024-08-18T14:55:00.423-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:56:08.312-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:56:08.312-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:56:08.312-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:56:08.312-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:56:08.312-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:56:08.312-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:56:08.312-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:56:08.312-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:56:08.313-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:56:08.314-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:56:08.314-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:56:08.317-0400 [DEBUG] New state was assigned lineage "a58296d2-ee31-16f7-6e81-12a13905d56a"
+2024-08-18T14:56:08.317-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:56:08.317-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:56:08.317-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:56:08.322-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:56:08.322-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:56:08.323-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:56:08.328-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:56:08.329-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:56:08.329-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:56:08.338-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:56:08.340-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67336
+2024-08-18T14:56:08.340-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:56:08.958-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:56:08.958-0400
+2024-08-18T14:56:08.964-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:56:08.964-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin1485716792 network=unix timestamp=2024-08-18T14:56:08.964-0400
+2024-08-18T14:56:08.975-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: tf_req_id=bd0876c0-45fc-13ae-207a-05ee19f0135b @module=sdk.proto tf_proto_version=6.6 tf_provider_addr=registry.terraform.io/tbd/statsig diagnostic_detail="Attribute \"target_apps\" must be computed when using default. This is an issue with the provider and should be reported to the provider developers." diagnostic_severity=ERROR diagnostic_summary="Schema Using Attribute Default For Non-Computed Attribute" tf_rpc=GetProviderSchema @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 timestamp=2024-08-18T14:56:08.975-0400
+2024-08-18T14:56:08.975-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: diagnostic_severity=ERROR diagnostic_summary="Schema Using Attribute Default For Non-Computed Attribute" @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 diagnostic_detail="Attribute \"holdout_ids\" must be computed when using default. This is an issue with the provider and should be reported to the provider developers." tf_req_id=bd0876c0-45fc-13ae-207a-05ee19f0135b tf_rpc=GetProviderSchema @module=sdk.proto tf_proto_version=6.6 tf_provider_addr=registry.terraform.io/tbd/statsig timestamp=2024-08-18T14:56:08.975-0400
+2024-08-18T14:56:08.975-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: tf_proto_version=6.6 @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 @module=sdk.proto diagnostic_detail="Attribute \"tags\" must be computed when using default. This is an issue with the provider and should be reported to the provider developers." diagnostic_severity=ERROR diagnostic_summary="Schema Using Attribute Default For Non-Computed Attribute" tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=bd0876c0-45fc-13ae-207a-05ee19f0135b tf_rpc=GetProviderSchema timestamp=2024-08-18T14:56:08.975-0400
+2024-08-18T14:56:08.976-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:56:08.977-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67336
+2024-08-18T14:56:08.977-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:56:41.131-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:56:41.132-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:56:41.132-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:56:41.132-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:56:41.132-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:56:41.132-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:56:41.132-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:56:41.132-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:56:41.132-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:56:41.133-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:56:41.134-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:56:41.139-0400 [DEBUG] New state was assigned lineage "a3941a83-8a18-5993-898b-70c8a22cedcb"
+2024-08-18T14:56:41.139-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:56:41.139-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:56:41.139-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:56:41.142-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:56:41.144-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:56:41.147-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:56:41.155-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:56:41.156-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:56:41.156-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:56:41.166-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:56:41.168-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67613
+2024-08-18T14:56:41.168-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:56:41.216-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:56:41.215-0400
+2024-08-18T14:56:41.223-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin1324944511 network=unix timestamp=2024-08-18T14:56:41.223-0400
+2024-08-18T14:56:41.223-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:56:41.244-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 diagnostic_severity=ERROR tf_proto_version=6.6 tf_req_id=d9fcac74-4885-8318-4750-95f6b8f27cdc tf_rpc=GetProviderSchema @module=sdk.proto diagnostic_detail="Attribute \"target_apps\" must be computed when using default. This is an issue with the provider and should be reported to the provider developers." diagnostic_summary="Schema Using Attribute Default For Non-Computed Attribute" tf_provider_addr=registry.terraform.io/tbd/statsig timestamp=2024-08-18T14:56:41.244-0400
+2024-08-18T14:56:41.244-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 diagnostic_summary="Schema Using Attribute Default For Non-Computed Attribute" tf_req_id=d9fcac74-4885-8318-4750-95f6b8f27cdc @module=sdk.proto diagnostic_detail="Attribute \"holdout_ids\" must be computed when using default. This is an issue with the provider and should be reported to the provider developers." diagnostic_severity=ERROR tf_proto_version=6.6 tf_provider_addr=registry.terraform.io/tbd/statsig tf_rpc=GetProviderSchema timestamp=2024-08-18T14:56:41.244-0400
+2024-08-18T14:56:41.244-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58 diagnostic_detail="Attribute \"tags\" must be computed when using default. This is an issue with the provider and should be reported to the provider developers." diagnostic_severity=ERROR diagnostic_summary="Schema Using Attribute Default For Non-Computed Attribute" tf_proto_version=6.6 tf_req_id=d9fcac74-4885-8318-4750-95f6b8f27cdc @module=sdk.proto tf_provider_addr=registry.terraform.io/tbd/statsig tf_rpc=GetProviderSchema timestamp=2024-08-18T14:56:41.244-0400
+2024-08-18T14:56:41.246-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:56:41.247-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67613
+2024-08-18T14:56:41.247-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:56:45.018-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:56:45.018-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:56:45.018-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:56:45.018-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:56:45.018-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:56:45.018-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:56:45.018-0400 [INFO]  CLI args: []string{"terraform", "plan"}
+2024-08-18T14:56:45.018-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:56:45.018-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:56:45.019-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:56:45.019-0400 [INFO]  CLI command args: []string{"plan"}
+2024-08-18T14:56:45.019-0400 [DEBUG] New state was assigned lineage "7ed92bd9-6659-c310-3ded-8d8061afa7ac"
+2024-08-18T14:56:45.019-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:56:45.019-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:56:45.020-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:56:45.022-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:56:45.022-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:56:45.022-0400 [INFO]  backend/local: starting Plan operation
+2024-08-18T14:56:45.024-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:56:45.024-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:56:45.024-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:56:45.030-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:56:45.032-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67669
+2024-08-18T14:56:45.032-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:56:45.627-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:56:45.627-0400
+2024-08-18T14:56:45.634-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:56:45.634-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin2282424933 network=unix timestamp=2024-08-18T14:56:45.634-0400
+2024-08-18T14:56:45.642-0400 [DEBUG] No provider meta schema returned
+2024-08-18T14:56:45.643-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:56:45.643-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67669
+2024-08-18T14:56:45.643-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:56:45.644-0400 [DEBUG] Building and walking validate graph
+2024-08-18T14:56:45.646-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:56:45.646-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:56:45.646-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test]
+2024-08-18T14:56:45.647-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:56:45.648-0400 [DEBUG] Starting graph walk: walkValidate
+2024-08-18T14:56:45.651-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:56:45.651-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:56:45.654-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:56:45.656-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67671
+2024-08-18T14:56:45.656-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:56:45.899-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:56:45.899-0400
+2024-08-18T14:56:45.912-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:56:45.912-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin4175076441 network=unix timestamp=2024-08-18T14:56:45.911-0400
+2024-08-18T14:56:45.920-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:56:45.922-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:56:45.923-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67671
+2024-08-18T14:56:45.923-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:56:45.924-0400 [INFO]  backend/local: plan calling Plan
+2024-08-18T14:56:45.924-0400 [DEBUG] Building and walking plan graph for NormalMode
+2024-08-18T14:56:45.925-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:56:45.926-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test (expand)" references: []
+2024-08-18T14:56:45.926-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test (expand)]
+2024-08-18T14:56:45.926-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:56:45.926-0400 [DEBUG] Starting graph walk: walkPlan
+2024-08-18T14:56:45.926-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:56:45.926-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:56:45.929-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:56:45.931-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67672
+2024-08-18T14:56:45.931-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:56:45.937-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:56:45.937-0400
+2024-08-18T14:56:45.945-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:56:45.945-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: network=unix address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin1717473602 timestamp=2024-08-18T14:56:45.945-0400
+2024-08-18T14:56:45.951-0400 [INFO]  provider.terraform-provider-statsig: Configuring Statsig provider: @module=statsig tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=5f14dc77-e1fa-b80c-f6eb-6d766a043ac5 tf_rpc=ConfigureProvider @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:63 timestamp=2024-08-18T14:56:45.951-0400
+2024-08-18T14:56:45.952-0400 [DEBUG] provider.terraform-provider-statsig: Creating Statsig API Client: @module=statsig tf_req_id=5f14dc77-e1fa-b80c-f6eb-6d766a043ac5 @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:107 console_api_key="***" tf_provider_addr=registry.terraform.io/tbd/statsig tf_rpc=ConfigureProvider timestamp=2024-08-18T14:56:45.951-0400
+2024-08-18T14:56:45.952-0400 [INFO]  provider.terraform-provider-statsig: Configured Statsig provider: @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:126 success=true tf_provider_addr=registry.terraform.io/tbd/statsig @module=statsig console_api_key="***" tf_req_id=5f14dc77-e1fa-b80c-f6eb-6d766a043ac5 tf_rpc=ConfigureProvider timestamp=2024-08-18T14:56:45.951-0400
+2024-08-18T14:56:45.952-0400 [DEBUG] Resource instance state not found for node "statsig_dynamic_config.test", instance statsig_dynamic_config.test
+2024-08-18T14:56:45.952-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:56:45.953-0400 [DEBUG] refresh: statsig_dynamic_config.test: no state, so not refreshing
+2024-08-18T14:56:45.953-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:56:45.956-0400 [DEBUG] provider.terraform-provider-statsig: Marking Computed attributes with null configuration values as unknown (known after apply) in the plan to prevent potential Terraform errors: @module=sdk.framework tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=d809eb0d-defa-510e-f9ac-43c73996f010 tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:217 tf_rpc=PlanResourceChange timestamp=2024-08-18T14:56:45.956-0400
+2024-08-18T14:56:45.956-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 tf_attribute_path="AttributeName(\"creator_email\")" tf_resource_type=statsig_dynamic_config @module=sdk.framework tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=d809eb0d-defa-510e-f9ac-43c73996f010 tf_rpc=PlanResourceChange timestamp=2024-08-18T14:56:45.956-0400
+2024-08-18T14:56:45.956-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_attribute_path="AttributeName(\"last_modifier_name\")" tf_req_id=d809eb0d-defa-510e-f9ac-43c73996f010 tf_rpc=PlanResourceChange @module=sdk.framework tf_provider_addr=registry.terraform.io/tbd/statsig tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 timestamp=2024-08-18T14:56:45.956-0400
+2024-08-18T14:56:45.956-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_attribute_path="AttributeName(\"creator_name\")" tf_provider_addr=registry.terraform.io/tbd/statsig tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 @module=sdk.framework tf_req_id=d809eb0d-defa-510e-f9ac-43c73996f010 timestamp=2024-08-18T14:56:45.956-0400
+2024-08-18T14:56:45.956-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_attribute_path="AttributeName(\"id\")" @module=sdk.framework tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=d809eb0d-defa-510e-f9ac-43c73996f010 tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 timestamp=2024-08-18T14:56:45.956-0400
+2024-08-18T14:56:45.956-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 @module=sdk.framework tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange tf_attribute_path="AttributeName(\"last_modifier_email\")" tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=d809eb0d-defa-510e-f9ac-43c73996f010 timestamp=2024-08-18T14:56:45.956-0400
+2024-08-18T14:56:45.958-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:56:45.959-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67672
+2024-08-18T14:56:45.959-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:56:45.959-0400 [DEBUG] building apply graph to check for errors
+2024-08-18T14:56:45.959-0400 [DEBUG] Resource state not found for node "statsig_dynamic_config.test", instance statsig_dynamic_config.test
+2024-08-18T14:56:45.959-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:56:45.959-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:56:45.959-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test (expand)" references: []
+2024-08-18T14:56:45.959-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test (expand) statsig_dynamic_config.test statsig_dynamic_config.test]
+2024-08-18T14:56:45.959-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:56:45.959-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:56:45.959-0400 [INFO]  backend/local: plan operation completed
+2024-08-18T14:56:59.650-0400 [INFO]  Terraform version: 1.8.5
+2024-08-18T14:56:59.650-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.51.0
+2024-08-18T14:56:59.650-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.20.0
+2024-08-18T14:56:59.650-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.1.1
+2024-08-18T14:56:59.650-0400 [DEBUG] using github.com/zclconf/go-cty v1.14.3
+2024-08-18T14:56:59.650-0400 [INFO]  Go runtime version: go1.22.1
+2024-08-18T14:56:59.650-0400 [INFO]  CLI args: []string{"terraform", "apply", "-auto-approve"}
+2024-08-18T14:56:59.650-0400 [DEBUG] Attempting to open CLI config file: /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:56:59.650-0400 [INFO]  Loading CLI configuration from /Users/tamir.arnesty/.terraformrc
+2024-08-18T14:56:59.651-0400 [DEBUG] Explicit provider installation configuration is set
+2024-08-18T14:56:59.651-0400 [INFO]  CLI command args: []string{"apply", "-auto-approve"}
+2024-08-18T14:56:59.652-0400 [DEBUG] New state was assigned lineage "d1cb1e03-104b-ef6d-05b3-fc3b7ef4e00e"
+2024-08-18T14:56:59.652-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:56:59.652-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden to load from /Users/tamir.arnesty/go/bin
+2024-08-18T14:56:59.652-0400 [DEBUG] checking for provisioner in "."
+2024-08-18T14:56:59.657-0400 [DEBUG] checking for provisioner in "/opt/homebrew/bin"
+2024-08-18T14:56:59.657-0400 [DEBUG] Provider registry.terraform.io/tbd/statsig is overridden by dev_overrides
+2024-08-18T14:56:59.657-0400 [INFO]  backend/local: starting Apply operation
+2024-08-18T14:56:59.659-0400 [DEBUG] Config.VerifyDependencySelections: skipping registry.terraform.io/tbd/statsig because it's overridden by a special configuration setting
+2024-08-18T14:56:59.660-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:56:59.660-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:56:59.667-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:56:59.669-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67767
+2024-08-18T14:56:59.669-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:56:59.678-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:56:59.678-0400
+2024-08-18T14:56:59.685-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:56:59.685-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin2241423271 network=unix timestamp=2024-08-18T14:56:59.685-0400
+2024-08-18T14:56:59.691-0400 [DEBUG] No provider meta schema returned
+2024-08-18T14:56:59.692-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:56:59.692-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67767
+2024-08-18T14:56:59.692-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:56:59.692-0400 [DEBUG] Building and walking validate graph
+2024-08-18T14:56:59.692-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test" (*terraform.NodeValidatableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:56:59.692-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test]
+2024-08-18T14:56:59.692-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:56:59.693-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:56:59.693-0400 [DEBUG] Starting graph walk: walkValidate
+2024-08-18T14:56:59.693-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:56:59.693-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:56:59.696-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:56:59.698-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67768
+2024-08-18T14:56:59.698-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:56:59.705-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:56:59.705-0400
+2024-08-18T14:56:59.712-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:56:59.712-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin193303577 network=unix timestamp=2024-08-18T14:56:59.712-0400
+2024-08-18T14:56:59.718-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:56:59.719-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:56:59.719-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67768
+2024-08-18T14:56:59.719-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:56:59.719-0400 [INFO]  backend/local: apply calling Plan
+2024-08-18T14:56:59.719-0400 [DEBUG] Building and walking plan graph for NormalMode
+2024-08-18T14:56:59.719-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test (expand)" (*terraform.nodeExpandPlannableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:56:59.719-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test (expand)" references: []
+2024-08-18T14:56:59.719-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test (expand)]
+2024-08-18T14:56:59.719-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:56:59.720-0400 [DEBUG] Starting graph walk: walkPlan
+2024-08-18T14:56:59.720-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:56:59.720-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:56:59.722-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:56:59.724-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67769
+2024-08-18T14:56:59.724-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:56:59.732-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:56:59.732-0400
+2024-08-18T14:56:59.738-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:56:59.738-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin2288063472 network=unix timestamp=2024-08-18T14:56:59.738-0400
+2024-08-18T14:56:59.744-0400 [INFO]  provider.terraform-provider-statsig: Configuring Statsig provider: @module=statsig tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=fb80cfa7-bcf2-838a-39ad-e656a04caff3 tf_rpc=ConfigureProvider @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:63 timestamp=2024-08-18T14:56:59.744-0400
+2024-08-18T14:56:59.744-0400 [DEBUG] provider.terraform-provider-statsig: Creating Statsig API Client: @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:107 @module=statsig console_api_key="***" tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=fb80cfa7-bcf2-838a-39ad-e656a04caff3 tf_rpc=ConfigureProvider timestamp=2024-08-18T14:56:59.744-0400
+2024-08-18T14:56:59.744-0400 [INFO]  provider.terraform-provider-statsig: Configured Statsig provider: @module=statsig console_api_key="***" @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:126 success=true tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=fb80cfa7-bcf2-838a-39ad-e656a04caff3 tf_rpc=ConfigureProvider timestamp=2024-08-18T14:56:59.744-0400
+2024-08-18T14:56:59.744-0400 [DEBUG] Resource instance state not found for node "statsig_dynamic_config.test", instance statsig_dynamic_config.test
+2024-08-18T14:56:59.744-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:56:59.744-0400 [DEBUG] refresh: statsig_dynamic_config.test: no state, so not refreshing
+2024-08-18T14:56:59.744-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:56:59.747-0400 [DEBUG] provider.terraform-provider-statsig: Marking Computed attributes with null configuration values as unknown (known after apply) in the plan to prevent potential Terraform errors: tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:217 tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=d6a1cdef-0595-0797-d2a9-f47c3837de6d tf_rpc=PlanResourceChange @module=sdk.framework timestamp=2024-08-18T14:56:59.747-0400
+2024-08-18T14:56:59.747-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 tf_provider_addr=registry.terraform.io/tbd/statsig @module=sdk.framework tf_attribute_path="AttributeName(\"last_modifier_email\")" tf_req_id=d6a1cdef-0595-0797-d2a9-f47c3837de6d tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange timestamp=2024-08-18T14:56:59.747-0400
+2024-08-18T14:56:59.747-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange tf_attribute_path="AttributeName(\"last_modifier_name\")" tf_req_id=d6a1cdef-0595-0797-d2a9-f47c3837de6d @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 @module=sdk.framework tf_provider_addr=registry.terraform.io/tbd/statsig timestamp=2024-08-18T14:56:59.747-0400
+2024-08-18T14:56:59.747-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_req_id=d6a1cdef-0595-0797-d2a9-f47c3837de6d tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 tf_rpc=PlanResourceChange @module=sdk.framework tf_attribute_path="AttributeName(\"creator_name\")" tf_provider_addr=registry.terraform.io/tbd/statsig timestamp=2024-08-18T14:56:59.747-0400
+2024-08-18T14:56:59.747-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_provider_addr=registry.terraform.io/tbd/statsig tf_attribute_path="AttributeName(\"id\")" tf_req_id=d6a1cdef-0595-0797-d2a9-f47c3837de6d tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 @module=sdk.framework timestamp=2024-08-18T14:56:59.747-0400
+2024-08-18T14:56:59.747-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: @module=sdk.framework tf_attribute_path="AttributeName(\"creator_email\")" tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange tf_req_id=d6a1cdef-0595-0797-d2a9-f47c3837de6d @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 tf_provider_addr=registry.terraform.io/tbd/statsig timestamp=2024-08-18T14:56:59.747-0400
+2024-08-18T14:56:59.748-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:56:59.749-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67769
+2024-08-18T14:56:59.749-0400 [DEBUG] provider: plugin exited
+2024-08-18T14:56:59.749-0400 [DEBUG] building apply graph to check for errors
+2024-08-18T14:56:59.749-0400 [DEBUG] Resource state not found for node "statsig_dynamic_config.test", instance statsig_dynamic_config.test
+2024-08-18T14:56:59.749-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:56:59.749-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:56:59.749-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test (expand)" references: []
+2024-08-18T14:56:59.749-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test (expand) statsig_dynamic_config.test statsig_dynamic_config.test]
+2024-08-18T14:56:59.749-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:56:59.749-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:56:59.750-0400 [INFO]  backend/local: apply calling Apply
+2024-08-18T14:56:59.750-0400 [DEBUG] Building and walking apply graph for NormalMode plan
+2024-08-18T14:56:59.750-0400 [DEBUG] Resource state not found for node "statsig_dynamic_config.test", instance statsig_dynamic_config.test
+2024-08-18T14:56:59.750-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test (expand)" (*terraform.nodeExpandApplyableResource) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:56:59.750-0400 [DEBUG] ProviderTransformer: "statsig_dynamic_config.test" (*terraform.NodeApplyableResourceInstance) needs provider["registry.terraform.io/tbd/statsig"]
+2024-08-18T14:56:59.750-0400 [DEBUG] ReferenceTransformer: "provider[\"registry.terraform.io/tbd/statsig\"]" references: []
+2024-08-18T14:56:59.750-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test (expand)" references: []
+2024-08-18T14:56:59.750-0400 [DEBUG] ReferenceTransformer: "output.test_dynamic_config (expand)" references: [statsig_dynamic_config.test (expand) statsig_dynamic_config.test statsig_dynamic_config.test]
+2024-08-18T14:56:59.750-0400 [DEBUG] ReferenceTransformer: "statsig_dynamic_config.test" references: []
+2024-08-18T14:56:59.751-0400 [DEBUG] Starting graph walk: walkApply
+2024-08-18T14:56:59.751-0400 [DEBUG] created provider logger: level=debug
+2024-08-18T14:56:59.751-0400 [INFO]  provider: configuring client automatic mTLS
+2024-08-18T14:56:59.753-0400 [DEBUG] provider: starting plugin: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig args=["/Users/tamir.arnesty/go/bin/terraform-provider-statsig"]
+2024-08-18T14:56:59.755-0400 [DEBUG] provider: plugin started: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67770
+2024-08-18T14:56:59.755-0400 [DEBUG] provider: waiting for RPC address: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig
+2024-08-18T14:56:59.762-0400 [INFO]  provider.terraform-provider-statsig: configuring server automatic mTLS: timestamp=2024-08-18T14:56:59.762-0400
+2024-08-18T14:56:59.768-0400 [DEBUG] provider: using plugin: version=6
+2024-08-18T14:56:59.768-0400 [DEBUG] provider.terraform-provider-statsig: plugin address: network=unix address=/var/folders/q3/5hwkb90d3k10k4d2792gbj900000gp/T/plugin2149231506 timestamp=2024-08-18T14:56:59.768-0400
+2024-08-18T14:56:59.773-0400 [INFO]  provider.terraform-provider-statsig: Configuring Statsig provider: tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=90543e8f-f2f0-8c38-ed59-df5dc56d6697 tf_rpc=ConfigureProvider @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:63 @module=statsig timestamp=2024-08-18T14:56:59.773-0400
+2024-08-18T14:56:59.773-0400 [DEBUG] provider.terraform-provider-statsig: Creating Statsig API Client: @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:107 tf_provider_addr=registry.terraform.io/tbd/statsig tf_rpc=ConfigureProvider @module=statsig console_api_key="***" tf_req_id=90543e8f-f2f0-8c38-ed59-df5dc56d6697 timestamp=2024-08-18T14:56:59.773-0400
+2024-08-18T14:56:59.773-0400 [INFO]  provider.terraform-provider-statsig: Configured Statsig provider: tf_rpc=ConfigureProvider @module=statsig success=true tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=90543e8f-f2f0-8c38-ed59-df5dc56d6697 @caller=/Users/tamir.arnesty/git/personal/terraform-provider-statsig/internal/provider/provider.go:126 console_api_key="***" timestamp=2024-08-18T14:56:59.773-0400
+2024-08-18T14:56:59.774-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:56:59.776-0400 [DEBUG] provider.terraform-provider-statsig: Marking Computed attributes with null configuration values as unknown (known after apply) in the plan to prevent potential Terraform errors: @module=sdk.framework tf_rpc=PlanResourceChange @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:217 tf_resource_type=statsig_dynamic_config tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=9908f4e6-ed78-9bec-ccf2-30329740a82b timestamp=2024-08-18T14:56:59.776-0400
+2024-08-18T14:56:59.776-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_provider_addr=registry.terraform.io/tbd/statsig @module=sdk.framework tf_attribute_path="AttributeName(\"last_modifier_name\")" tf_rpc=PlanResourceChange @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 tf_req_id=9908f4e6-ed78-9bec-ccf2-30329740a82b tf_resource_type=statsig_dynamic_config timestamp=2024-08-18T14:56:59.776-0400
+2024-08-18T14:56:59.776-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: @module=sdk.framework tf_req_id=9908f4e6-ed78-9bec-ccf2-30329740a82b tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 tf_attribute_path="AttributeName(\"last_modifier_email\")" tf_provider_addr=registry.terraform.io/tbd/statsig tf_rpc=PlanResourceChange timestamp=2024-08-18T14:56:59.776-0400
+2024-08-18T14:56:59.776-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_rpc=PlanResourceChange tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=9908f4e6-ed78-9bec-ccf2-30329740a82b tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 @module=sdk.framework tf_attribute_path="AttributeName(\"id\")" timestamp=2024-08-18T14:56:59.776-0400
+2024-08-18T14:56:59.776-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 tf_provider_addr=registry.terraform.io/tbd/statsig tf_rpc=PlanResourceChange tf_resource_type=statsig_dynamic_config @module=sdk.framework tf_attribute_path="AttributeName(\"creator_name\")" tf_req_id=9908f4e6-ed78-9bec-ccf2-30329740a82b timestamp=2024-08-18T14:56:59.776-0400
+2024-08-18T14:56:59.776-0400 [DEBUG] provider.terraform-provider-statsig: marking computed attribute that is null in the config as unknown: tf_provider_addr=registry.terraform.io/tbd/statsig tf_req_id=9908f4e6-ed78-9bec-ccf2-30329740a82b tf_resource_type=statsig_dynamic_config tf_rpc=PlanResourceChange @module=sdk.framework tf_attribute_path="AttributeName(\"creator_email\")" @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-framework@v1.11.0/internal/fwserver/server_planresourcechange.go:467 timestamp=2024-08-18T14:56:59.776-0400
+2024-08-18T14:56:59.777-0400 [INFO]  Starting apply for statsig_dynamic_config.test
+2024-08-18T14:56:59.777-0400 [DEBUG] skipping FixUpBlockAttrs
+2024-08-18T14:56:59.777-0400 [DEBUG] statsig_dynamic_config.test: applying the planned Create change
+2024-08-18T14:56:59.778-0400 [ERROR] provider.terraform-provider-statsig: Response contains error diagnostic: diagnostic_severity=ERROR @module=sdk.proto diagnostic_attribute="AttributeName(\"default_value\")" diagnostic_summary="Value Conversion Error" tf_req_id=83846886-49f8-49ad-85e0-8e793a1bda60 tf_rpc=ApplyResourceChange tf_proto_version=6.6 tf_provider_addr=registry.terraform.io/tbd/statsig tf_resource_type=statsig_dynamic_config @caller=/Users/tamir.arnesty/go/pkg/mod/github.com/hashicorp/terraform-plugin-go@v0.23.0/tfprotov6/internal/diag/diagnostics.go:58
+  diagnostic_detail=
+  | An unexpected error was encountered trying to build a value. This is always an error in the provider. Please report the following to the provider developer:
+  |
+  | Reflection for dynamic types is currently not supported. Use the corresponding `types` package type or a custom type that handles dynamic values.
+  |
+  | Path: default_value
+  | Target Type: interface {}
+  | Suggested `types` Type: basetypes.DynamicValue
+   timestamp=2024-08-18T14:56:59.778-0400
+2024-08-18T14:56:59.787-0400 [DEBUG] State storage *statemgr.Filesystem declined to persist a state snapshot
+2024-08-18T14:56:59.787-0400 [ERROR] vertex "statsig_dynamic_config.test" error: Value Conversion Error
+2024-08-18T14:56:59.795-0400 [DEBUG] provider.stdio: received EOF, stopping recv loop: err="rpc error: code = Unavailable desc = error reading from server: EOF"
+2024-08-18T14:56:59.796-0400 [DEBUG] provider: plugin process exited: path=/Users/tamir.arnesty/go/bin/terraform-provider-statsig pid=67770
+2024-08-18T14:56:59.796-0400 [DEBUG] provider: plugin exited

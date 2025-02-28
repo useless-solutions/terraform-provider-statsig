@@ -88,7 +88,7 @@ func (d *TagsDataSource) Read(ctx context.Context, req datasource.ReadRequest, r
 		return
 	}
 
-	tags, err := d.client.GetTags(ctx)
+	tags, err := d.client.GetAllTags(ctx)
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to read Statsig Tags, got error: %s", err))
 		return

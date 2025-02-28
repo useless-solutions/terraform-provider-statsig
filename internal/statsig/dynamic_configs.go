@@ -4,46 +4,53 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 type DynamicConfig struct {
-	ID               string              `json:"id"`
-	Description      string              `json:"description"`
-	IDType           string              `json:"idType"`
-	LastModifierID   string              `json:"lastModifierID"`
-	LastModifierName string              `json:"lastModifierName"`
-	CreatorEmail     string              `json:"creatorEmail"`
-	CreatorName      string              `json:"creatorName"`
-	CreatedTime      int64               `json:"createdTime"`
-	HoldoutIDs       []string            `json:"holdoutIDs"`
-	IsEnabled        bool                `json:"isEnabled"`
-	Rules            []DynamicConfigRule `json:"rules"`
-	DefaultValue     DynamicConfigValue  `json:"defaultValue"`
-	Tags             []string            `json:"tags"`
+	ID                string `json:"id"`
+	Name              string `json:"name"`
+	Description       string `json:"description"`
+	IDType            string `json:"idType"`
+	LastModifierName  string `json:"lastModifierName"`
+	LastModifierEmail string `json:"lastModifierEmail"`
+	CreatorName       string `json:"creatorName"`
+	CreatorEmail      string `json:"creatorEmail"`
+	// Config related elements
+	TargetApps []string `json:"targetApps"`
+	Tags       []string `json:"tags"`
+	Team       string   `json:"team"`
+
+	HoldoutIDs   []string            `json:"holdoutIDs"`
+	IsEnabled    bool                `json:"isEnabled"`
+	Rules        []DynamicConfigRule `json:"rules"`
+	DefaultValue types.DynamicValue  `json:"defaultValue"`
 }
 
 type DynamicConfigRule struct {
-	Name           string                   `json:"name"`
-	PassPercentage int                      `json:"passPercentage"`
-	Conditions     []DynamicConfigCondition `json:"conditions"`
-	ReturnValue    DynamicConfigValue       `json:"returnValue"`
+	ID             string                       `json:"id"`
+	BaseID         string                       `json:"baseID"`
+	Name           string                       `json:"name"`
+	PassPercentage int                          `json:"passPercentage"`
+	Conditions     []DynamicConfigRuleCondition `json:"conditions"`
+	ReturnValue    interface{}                  `json:"returnValue"`
+	Environments   []string                     `json:"environments"`
 }
 
-type DynamicConfigCondition struct {
+type DynamicConfigRuleCondition struct {
 	Type        string `json:"type"`
 	Operator    string `json:"operator"`
-	TargetValue int    `json:"targetValue"`
+	TargetValue any    `json:"targetValue"` // This value can be anything (string, list, int, etc)
 	Field       string `json:"field"`
-	CustomID    string `json:"customID"`
 }
 
-type DynamicConfigValue struct {
-	Key interface{} `json:"key"`
-}
+const dynamicConfigEndpoint = "dynamic_configs"
 
-func (c *Client) GetDynamicConfigs(ctx context.Context) ([]DynamicConfig, error) {
-	params := map[string]string{"page": "1", "limit": "100"}
-	response, err := c.Get("dynamic_configs", params)
+func (c *Client) GetAllDynamicConfigs(ctx context.Context) ([]DynamicConfig, error) {
+	params := QueryParams{"page": "1", "limit": "100"}
+	response, err := c.Get(dynamicConfigEndpoint, params)
 	if err != nil {
 		return nil, err
 	}
@@ -56,8 +63,8 @@ func (c *Client) GetDynamicConfigs(ctx context.Context) ([]DynamicConfig, error)
 	return dynamicConfigs.Data, nil
 }
 
-func (c *Client) GetDynamicConfig(ctx context.Context, id string) (*DynamicConfig, error) {
-	response, err := c.Get(fmt.Sprintf("dynamic_configs/%s", id), nil)
+func (c *Client) GetDynamicConfig(ctx context.Context, name string) (*DynamicConfig, error) {
+	response, err := c.Get(createEndpointPath(dynamicConfigEndpoint, name), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -68,4 +75,24 @@ func (c *Client) GetDynamicConfig(ctx context.Context, id string) (*DynamicConfi
 	}
 
 	return &dynamicConfig.Data, nil
+}
+
+func (c *Client) CreateDynamicConfig(ctx context.Context, config DynamicConfig) (*DynamicConfig, error) {
+	response, err := c.Post(dynamicConfigEndpoint, config)
+	if err != nil {
+		tflog.Error(ctx, fmt.Sprintf("Error creating tag: %s", err))
+		return nil, err
+	}
+
+	// Log the response body
+	tflog.Debug(ctx, fmt.Sprintf("Create tag response: %s", response))
+	createdConfig := APIResponse[DynamicConfig]{}
+	if err := json.Unmarshal(response, &createdConfig); err != nil {
+		tflog.Error(ctx, fmt.Sprintf("Error unmarshalling tag: %s", err))
+		return nil, err
+	}
+
+	tflog.Trace(ctx, fmt.Sprintf("Tag created with ID: %s", createdConfig.Data.ID))
+
+	return &createdConfig.Data, nil
 }

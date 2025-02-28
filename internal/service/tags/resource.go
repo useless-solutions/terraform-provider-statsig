@@ -127,7 +127,7 @@ func (r *TagResource) Create(ctx context.Context, req resource.CreateRequest, re
 	tflog.Trace(ctx, fmt.Sprintf("Tag created with Name: %s; and ID: %s", plan.Name, plan.ID))
 
 	// Save data into Terraform state
-	resp.Diagnostics.Append(resp.State.Set(ctx, &plan)...)
+	resp.Diagnostics.Append(resp.State.Set(ctx, plan)...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
@@ -214,7 +214,7 @@ func (r *TagResource) Update(ctx context.Context, req resource.UpdateRequest, re
 		IsCore:      plan.IsCore, // IsCore is not modifiable via the API. Set the value to the current state.
 	}
 
-	tflog.Trace(ctx, fmt.Sprintf("Tag created with Name: %s; and ID: %s", plan.Name, plan.ID))
+	tflog.Trace(ctx, fmt.Sprintf("Tag updated with Name: %s; and ID: %s", plan.Name, plan.ID))
 
 	// Save data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &plan)...)

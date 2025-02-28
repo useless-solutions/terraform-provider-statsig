@@ -5,6 +5,7 @@ import (
 	"os"
 	"regexp"
 
+	"github.com/useless-solutions/terraform-provider-statsig/internal/service/dynamic_configs"
 	"github.com/useless-solutions/terraform-provider-statsig/internal/service/tags"
 	client "github.com/useless-solutions/terraform-provider-statsig/internal/statsig"
 
@@ -129,6 +130,7 @@ func (p *StatsigProvider) Configure(ctx context.Context, req provider.ConfigureR
 func (p *StatsigProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		tags.NewTagResource,
+		dynamic_configs.NewDynamicConfigResource,
 	}
 }
 
