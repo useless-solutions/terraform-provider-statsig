@@ -8,6 +8,8 @@ import (
 	"io"
 	"net/http"
 	"time"
+
+	client "github.com/useless-solutions/statsig-go-client"
 )
 
 type Client struct {
@@ -34,6 +36,25 @@ func NewClient(_ context.Context, apiKey string) (*Client, error) {
 		Metadata: getStatsigMetadata(),
 		Client:   &http.Client{Timeout: time.Second * 10},
 	}, nil
+}
+
+func NewAndImprovedClient(apiKey string) client.Client {
+	metadata := getStatsigMetadata()
+	return client.Client{
+		Server: "https://statsigapi.net/console/v1",
+		Client: &http.Client{Timeout: time.Second * 10},
+		RequestEditors: []client.RequestEditorFn{
+			func(ctx context.Context, req *http.Request) error {
+				req.Header.Add("STATSIG-API-KEY", apiKey)
+				if req.Method == "POST" || req.Method == "PATCH" {
+					req.Header.Set("Content-Type", "application/json; charset=UTF-8")
+				}
+				req.Header.Add("STATSIG-SDK-TYPE", metadata.SDKType)
+				req.Header.Add("STATSIG-SDK-VERSION", metadata.SDKVersion)
+				return nil
+			},
+		},
+	}
 }
 
 // Get performs a GET request with the provided endpoint and queryParams.
