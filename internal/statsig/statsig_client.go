@@ -8,6 +8,8 @@ import (
 	"io"
 	"net/http"
 	"time"
+
+	client "github.com/useless-solutions/statsig-go-client"
 )
 
 type Client struct {
@@ -27,13 +29,33 @@ type ErrorResponse struct {
 
 // NewClient creates a new Statsig client with the provided API key.
 // The Client instance includes an HTTP client with a 10-second timeout to be used for API requests.
-func NewClient(_ context.Context, apiKey string) (*Client, error) {
+// @Deprecated: Use NewClient instead.
+func NewDeprecatedClient(_ context.Context, apiKey string) (*Client, error) {
 	return &Client{
 		HostURL:  "https://statsigapi.net/console/v1",
 		APIKey:   apiKey,
 		Metadata: getStatsigMetadata(),
 		Client:   &http.Client{Timeout: time.Second * 10},
 	}, nil
+}
+
+func NewClient(apiKey string) client.Client {
+	metadata := getStatsigMetadata()
+	return client.Client{
+		Server: "https://statsigapi.net/console/v1",
+		Client: &http.Client{Timeout: time.Second * 10},
+		RequestEditors: []client.RequestEditorFn{
+			func(ctx context.Context, req *http.Request) error {
+				req.Header.Set("STATSIG-API-KEY", apiKey)
+				if req.Method == "POST" || req.Method == "PATCH" {
+					req.Header.Set("Content-Type", "application/json; charset=UTF-8")
+				}
+				req.Header.Set("STATSIG-SDK-TYPE", metadata.SDKType)
+				req.Header.Set("STATSIG-SDK-VERSION", metadata.SDKVersion)
+				return nil
+			},
+		},
+	}
 }
 
 // Get performs a GET request with the provided endpoint and queryParams.
