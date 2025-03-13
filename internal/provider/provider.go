@@ -107,7 +107,7 @@ func (p *StatsigProvider) Configure(ctx context.Context, req provider.ConfigureR
 	tflog.Debug(ctx, "Creating Statsig API Client")
 
 	// Create a new Statsig client using the configuration values
-	client, err := client.NewClient(ctx, consoleAPIKey)
+	client, err := client.NewDeprecatedClient(ctx, consoleAPIKey)
 	if err != nil {
 		resp.Diagnostics.AddError(
 			"Unable to create Statsig API Client",
